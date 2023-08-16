@@ -1,0 +1,26 @@
+parameters
+	$kgr_dir dir:/home/denis/projects/food-industry-kgr/source
+	$scripts_dir dir:/home/denis/projects/food-industry-kgr
+setup d:"how to run the knowledge base" prereq-file:setup-recipes/javascript_setup.tree,setup-recipes/ontology_setup.tree,
+	edit_kb_source_files
+		add_new_facts d:"add facts to $kb_path/*.tree"
+		choose_parts d:"choose what *.tree's to assemble by adding or deleting/commenting include snippets. Include snippets are those that contain tabtree filename inside the square brackets: '[filename.tree]'"
+	compile d:"first we need to transform from Tabtree format to RDF/Turtle format"
+		build_turtle cmd:`cd $scripts_dir; ./compile.rkt` output-file:$kgr_dir/_output/capital_ontology.ttl
+	validate prereq:install_rdf_validator
+		launch_validator cmd:`cd $kgr_dir`,`ttl _output/capital_ontology.ttl`
+	inference prereq:install_robot
+		build_inferenced_file cmd:`robot reason --reasoner ELK --input capital_ontology.ttl --output capital_ontology_inferenced.owl`
+	query_knowledge_graph
+		clojure
+			launch_clojure_repl cmd:`cd $scripts_dir; cd clojure; lein repl`
+			init_engine repl-cmd:`(init-db :owl-micro)`
+			update_query
+				edit_sparql_query file:$scripts_dir/clojure/src/capital_clojure_scripts/sparql_query.clj
+				reload_code repl-cmd:`(use 'capital-clojure-scripts.sparql-query :reload)`
+				run_sparql_query 
+				run_sparql 
+					short_cmd repl-cmd:`(save-csv (run-sparql))` output-file:/var/tmp/capital/sparql-result.json
+					detailed_cmd repl-cmd:`(save-csv (run-sparql) :file "../sparql/households.csv" :headers [:factory :place :product])`
+		arq prereq:jena
+			query_ttl cmd:`cd $scripts_dir/sparql`,`arq --data ../../capital-kgr/_output/capital_ontology.ttl --query factories_produced_tvsets.rq`
