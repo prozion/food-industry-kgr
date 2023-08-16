@@ -24,13 +24,8 @@
 
 (define objects_places (->>
                           (t+
-                            (parse-tabtree "/home/denis/projects/capital-kgr/companies/companies.tree")
-                            (parse-tabtree "/home/denis/projects/capital-kgr/factories/factories.tree")
-                            (parse-tabtree "/home/denis/projects/capital-kgr/logistics/logistics.tree")
-                            (parse-tabtree "/home/denis/projects/capital-kgr/companies/media_companies.tree")
-                            (parse-tabtree "/home/denis/projects/capital-kgr/people/people.tree")
-                            (parse-tabtree "/home/denis/projects/capital-kgr/companies/research_companies.tree")
-                            (parse-tabtree "/home/denis/projects/capital-kgr/companies/trade_companies.tree")
+                            (parse-tabtree "/home/denis/projects/food-industry-kgr/source/factories.tree")
+                            (parse-tabtree "/home/denis/projects/food-industry-kgr/source/factories_tare.tree")
                             )
                           hash-values
                           (map (λ (item) ($ place item)))

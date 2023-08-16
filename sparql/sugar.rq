@@ -1,0 +1,13 @@
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix : <https://purl.org/prozion/food_industry#>
+
+select distinct ?factory ?place ?product where {
+  {
+    ?factory rdf:type :ProductionUnit .
+    ?factory :prod ?product .
+    ?product :case-of :Бытовая_техника .
+  }
+  optional
+  {
+    ?factory :place ?place .
+  }}

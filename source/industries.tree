@@ -1,3 +1,4 @@
+; a:Industry will be inferred from the okonh: predicate
 Пищевая_промышленность okonh:18000 +hi-inv-rel:industry
 	Пищевкусовая_промышленность okonh:18100
 		Сахарная_промышленность okonh:18111

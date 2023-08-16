@@ -1,0 +1,24 @@
+sources +a:src/Source
+	БВ2021 dc/title:"Кому принадлежат «национальные достояния России»?" url:dzen.ru/a/YQj_CfDWzHAgQNr5 
+	КД url:ru.wikipedia.org/wiki/Кремлевский_доклад
+	ПСО dc/title:"Перечень системообразующих организаций" url:data.economy.gov.ru/system_org.xlsx
+	СУЭК1 url:miner.ru/info/179
+	Хлд url:холдинги.рф/krupneyshie-holdingi-rossii ; TODO
+	ЦРКИ deabbr:"Центр раскрытия корпоративной информации" url:e-disclosure.ru
+	Ak url:aftershock.news/?q=node/419907
+	Au url:https://www.audit-it.ru/contragent
+	Fabr url:fabricators.ru/zavody
+	FsPpl url:forbes.ru/milliardery/487934-110-rossijskih-milliarderov-rejting-forbes-2023
+	FsCmp url:forbes.ru/investicii/481503-50-krupnejsih-kompanij-investorov-rossii-2022-rejting-forbes
+	Ou url:oborudunion.ru/company ; RU 1000 отрасли
+	Porti url:porti.ru/company
+	Ppr url:poporyadku.ru
+	Sugar url:sugarfactories.ru/companies
+	RbcCmp url:companies.rbc.ru
+	W url:wikipedia.org
+	W_компании wiki:Категория:Предприятия
+	W_отрасли wiki:Промышленность#Отрасли
+	W_предприятия wiki:Категория:Компании_по_городам_России
+	5л url:https://pyatilistnik.info/what-the-sber-owns
+
+

@@ -7,11 +7,11 @@
 (require tabtree/utils)
 (require tabtree/sorters)
 
-(define places_russia_tt (parse-tabtree "/home/denis/projects/capital-kgr/places/places_russia.tree"))
-(define factories_russia_tt (parse-tabtree "/home/denis/projects/capital-kgr/factories/factories.tree"))
+(define places_russia_tt (parse-tabtree "/home/denis/projects/food-industry-kgr/source/places_russia.tree"))
+(define factories_russia_tt (parse-tabtree "/home/denis/projects/food-industry-kgr/source/factories.tree"))
 
 (define total-population (->> places_russia_tt hash-values (map (λ (item) (->number (hash-ref item "pop" "0")))) (apply +)))
 (define total-workers (->> factories_russia_tt hash-values (filter-not (λ (item) ($ end item))) (map (extend-numeric "w" min)) (apply +)))
 
 (--- "Total population in cities (from places_russia.tree): " (format-number "ddd.ddd.ddd" total-population))
-(--- "Total workers (from factories.tree): " (format-number "dd.ddd.ddd" (->int total-workers)))
+(--- "Total workers in the food industry (from factories.tree): " (format-number "dd.ddd.ddd" (->int total-workers)))

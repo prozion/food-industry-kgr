@@ -1,8 +1,6 @@
 food_product_families +a:Product +hi-inv-rel:case-of
-	Пиво
-		Пиво_Сармат
 	Пищевой_продукт
-		БАД
+		БАД a:NonOKONHProduct +a:NonOKONHProduct
 			Лецитин
 				Лецитин_подсолнечный
 		Изделие_бараночное
