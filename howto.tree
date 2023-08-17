@@ -5,11 +5,11 @@ setup d:"how to run the knowledge base" prereq-file:setup-recipes/javascript_set
 		add_new_facts d:"add facts to $prj_dir/source/*.tree"
 		choose_parts d:"choose what *.tree's to assemble by adding or deleting/commenting include snippets. Include snippets are those that contain tabtree filename inside the square brackets: '[filename.tree]'"
 	compile d:"first we need to transform from Tabtree format to RDF/Turtle format"
-		build_turtle cmd:`cd $prj_dir; ./compile.rkt` output-file:$prj_dir/turtle/food_industry.ttl
+		build_turtle cmd:`./compile.rkt` output-file:$prj_dir/turtle/food_industry.ttl
 	validate prereq:install_rdf_validator
 		launch_validator cmd:`ttl turtle/food_industry.ttl`
 	inference prereq:install_robot
 		build_inferenced_file cmd:`robot reason --reasoner ELK --input food_industry.ttl --output food_industry_inferenced.owl`
 	query_knowledge_graph
 		arq prereq:jena
-			query_ttl cmd:`cd $prj_dir/sparql`,`arq --data ../turtle/food_industry.ttl --query factories_produced_kefir.rq`
+			query_ttl cmd:`arq --data ../turtle/food_industry.ttl --query ../sparql/sugar.rq`

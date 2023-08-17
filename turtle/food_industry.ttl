@@ -1674,15 +1674,18 @@ tabtree:Id
 
 :Заинский_сахар
  rdf:type :ProductionUnit ;
- :place :Заинск .
+ :place :Заинск ;
+ :prod :Сахар .
 
 :Залегощенский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Залегощь .
+ :place :Залегощь ;
+ :prod :Сахар .
 
 :Земетчинский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Земетчино .
+ :place :Земетчино ;
+ :prod :Сахар .
 
 :Земляника
  rdf:type :Product ;
@@ -1741,7 +1744,8 @@ tabtree:Id
 
 :Изобильненский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Изобильный .
+ :place :Изобильный ;
+ :prod :Сахар .
 
 :Илецкий_соляной_рудник
  rdf:type :ProductionUnit ;
@@ -1826,7 +1830,8 @@ tabtree:Id
 
 :Каневсксахар
  rdf:type :ProductionUnit ;
- :place :Стародеревянковская .
+ :place :Стародеревянковская ;
+ :prod :Сахар .
 
 :Канская_табачная_фабрика
  rdf:type :ProductionUnit ;
@@ -1839,11 +1844,13 @@ tabtree:Id
 
 :Карачаево-Черкесский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Черкесск .
+ :place :Черкесск ;
+ :prod :Сахар .
 
 :Карламанский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Прибельский_Башкортостан .
+ :place :Прибельский_Башкортостан ;
+ :prod :Сахар .
 
 :Квас_сухой_хлебный
  rdf:type :Product ;
@@ -2105,7 +2112,8 @@ tabtree:Id
 
 :Краснопресненский_сахарорафинадный_завод
  rdf:type :ProductionUnit ;
- :place :Пинеровка .
+ :place :Пинеровка ;
+ :prod :Сахар-рафинад .
 
 :Краснояружский_сахарник
  rdf:type :ProductionUnit ;
@@ -2120,7 +2128,8 @@ tabtree:Id
 
 :Кривецкий_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Сейм .
+ :place :Сейм ;
+ :prod :Сахар .
 
 :Круассан
  rdf:type :Product ;
@@ -3021,7 +3030,7 @@ tabtree:Id
 
 :Сахар
  rdf:type :Product ;
- :case-of :Напиток .
+ :case-of :Пищевой_продукт .
 
 :Сахар-песок
  rdf:type :Product ;
@@ -3153,7 +3162,7 @@ tabtree:Id
 
 :Сок
  rdf:type :Product ;
- :case-of :Напиток .
+ :case-of :Пищевой_продукт .
 
 :Сок_концентрированный
  rdf:type :Product ;
@@ -3630,7 +3639,7 @@ tabtree:Id
 
 :Шорли
  rdf:type :Product ;
- :case-of :Напиток .
+ :case-of :Пищевой_продукт .
 
 :Эркен-Шахарский_сахарный_завод
  rdf:type :ProductionUnit ;
@@ -3675,4 +3684,3 @@ tabtree:Id
  :start "1982" ;
  :w "2000"^^xsd:integer ;
  rdf:type :ProductionUnit .
-
