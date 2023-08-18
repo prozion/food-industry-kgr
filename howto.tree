@@ -12,4 +12,4 @@ setup d:"how to run the knowledge base" prereq-file:setup-recipes/javascript_set
 		build_inferenced_file cmd:`robot reason --reasoner ELK --input food_industry.ttl --output food_industry_inferenced.owl`
 	query_knowledge_graph
 		arq prereq:jena
-			query_ttl cmd:`arq --data ../turtle/food_industry.ttl --query ../sparql/sugar.rq`
+			query_ttl cmd:`arq --data turtle/food_industry.ttl --query sparql/sugar.rq`

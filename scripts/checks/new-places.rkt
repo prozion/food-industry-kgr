@@ -6,8 +6,8 @@
 (require tabtree)
 (require tabtree/utils)
 
-(define places_russia_tt (parse-tabtree "/home/denis/projects/food-industry-kgr/places_russia.tree"))
-(define places_world_tt (parse-tabtree "/home/denis/projects/food-industry-kgr/places_world.tree"))
+(define places_russia_tt (parse-tabtree "/home/denis/projects/food-industry-kgr/source/places_russia.tree"))
+(define places_world_tt (parse-tabtree "/home/denis/projects/food-industry-kgr/source/places_world.tree"))
 (define places (hash-keys (t+ places_russia_tt places_world_tt)))
 
 (define places_without_coors (->> (t+ places_world_tt places_russia_tt)
