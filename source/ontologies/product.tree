@@ -1,0 +1,6 @@
+product
+	classes +a:owl/Class +hi-inv-rel:subclass-of
+		Product
+			NonOKONHProduct
+	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		prod-group domain:Product range:Product

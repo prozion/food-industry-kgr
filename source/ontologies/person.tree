@@ -1,0 +1,16 @@
+person
+	classes +a:owl/Class +hi-inv-rel:subclass-of
+		Person eq:pers/Person
+			Businessman
+		Post
+	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		board domain:Person range:Company
+			chairman
+		cash domain:Person range:tm/Money
+		competitor a:owl/SymmetricProperty domain:Businessman range:Businessman
+		current-person domain:Post range:Person
+		founder domain:Person range:Company
+		manager domain:Person range:Organization
+			director
+			president 
+		partner a:owl/SymmetricProperty domain:Businessman range:Businessman

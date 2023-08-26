@@ -23,22 +23,21 @@
 :acap
  rdfs:subPropertyOf :cap ;
  rdfs:comment "Authorised capital" ;
- rdf:type rdf:Property ;
- rdfs:range tm:Money .
+ rdf:type rdf:Property .
 
 :assets
- rdfs:domain :Organization ;
+ rdfs:domain :FinancialUnit ;
  rdf:type rdf:Property ;
- rdfs:range tm:Money .
+ rdfs:range :Assets .
 
 :Assets
  rdf:type owl:Class ;
- rdfs:subClassOf :CompanyMonetaryMetrics .
+ rdfs:subClassOf :FinancialUnitMonetaryMetrics .
 
 :board
  rdfs:domain :Person ;
  rdf:type rdf:Property ;
- rdfs:range :Organization .
+ rdfs:range :Company .
 
 :branches-n
  rdf:type rdf:Property ;
@@ -46,13 +45,14 @@
  rdfs:domain :ChainStore .
 
 :brand
- rdfs:domain :Organization ;
+ rdfs:subPropertyOf :food_industry ;
+ rdfs:domain (:Company :Factory) ;
  rdf:type rdf:Property ;
  rdfs:range :Brand .
 
 :Brand
  rdf:type owl:Class ;
- rdfs:subClassOf rdfs:Literal, :Property .
+ rdfs:subClassOf rdfs:Literal, :PropertyUnit .
 
 :BusinessGroup
  rdf:type owl:Class ;
@@ -72,13 +72,13 @@
  owl:sameAs org:BusinessUnit .
 
 :cap
- rdfs:domain :Organization ;
+ rdfs:domain :FinancialUnit ;
  rdf:type rdf:Property ;
- rdfs:range tm:Money .
+ rdfs:range :Capitalization .
 
 :Capitalization
  rdf:type owl:Class ;
- rdfs:subClassOf :CompanyMonetaryMetrics .
+ rdfs:subClassOf :FinancialUnitMonetaryMetrics .
 
 :Cartel
  rdf:type owl:Class ;
@@ -102,32 +102,21 @@
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :board .
 
-:city
- rdf:type rdf:Property ;
- owl:equivalentProperty loc:City .
-
 :co-owner
  rdf:type rdf:Property ;
  rdfs:subPropertyOf :owner .
 
 :company
  rdf:type rdf:Property ;
- owl:equivalentProperty org:company .
+ owl:equivalentProperty org:company ;
+ rdfs:subPropertyOf :food_industry .
 
 :Company
- rdfs:subClassOf rdf:Property, :BusinessUnit, :Property ;
+ rdfs:subClassOf rdf:Property, :FinancialUnit, :PropertyUnit, :BusinessUnit ;
  owl:sameAs org:Company ;
  rdfs:domain (:Company :Person) ;
  rdf:type owl:Class ;
  rdfs:range :Share .
-
-:CompanyMetrics
- rdf:type owl:Class ;
- rdfs:subClassOf rdfs:Literal .
-
-:CompanyMonetaryMetrics
- rdf:type owl:Class ;
- rdfs:subClassOf :MoneyAmount, :CompanyMetrics .
 
 :competitor
  rdfs:domain :Businessman ;
@@ -155,10 +144,6 @@
  rdf:type owl:Class ;
  rdfs:subClassOf (org:GroupOfPeople :Company), :BusinessUnit .
 
-:country
- rdf:type rdf:Property ;
- owl:equivalentProperty loc:country .
-
 :current-person
  rdfs:domain :Post ;
  rdf:type rdf:Property ;
@@ -168,14 +153,12 @@
  rdf:type rdf:Property ;
  owl:equivalentProperty time:date .
 
-:dept
- rdfs:domain :Organization ;
- rdf:type rdf:Property ;
- rdfs:range :Dept .
+:Deal
+ rdf:type owl:Class .
 
 :Dept
  rdf:type owl:Class ;
- rdfs:subClassOf :CompanyMonetaryMetrics .
+ rdfs:subClassOf :FinancialUnitMonetaryMetrics .
 
 :director
  rdf:type rdf:Property ;
@@ -196,11 +179,6 @@
  rdfs:subPropertyOf :facilities-from ;
  rdfs:domain :ProductionUnit .
 
-:facilities
- rdfs:domain :Company ;
- rdf:type rdf:Property ;
- rdfs:range :Company .
-
 :facilities-from
  rdfs:domain :Company ;
  rdf:type rdf:Property ;
@@ -208,7 +186,19 @@
 
 :Factory
  rdf:type owl:Class ;
- rdfs:subClassOf :ProductionUnit, :Property .
+ rdfs:subClassOf :PropertyUnit, :ProductionUnit, :FinancialUnit .
+
+:FinancialUnit
+ rdfs:comment "Applicable both to Companies and Factories" ;
+ rdf:type owl:Class .
+
+:FinancialUnitMetrics
+ rdf:type owl:Class ;
+ rdfs:subClassOf rdfs:Literal .
+
+:FinancialUnitMonetaryMetrics
+ rdf:type owl:Class ;
+ rdfs:subClassOf :FinancialUnitMetrics, :MoneyAmount, tm:Money .
 
 <https://purl.org/prozion/food_industry#>
  rdf:type owl:Ontology ;
@@ -248,9 +238,9 @@
  rdfs:range :Company .
 
 :from
- rdfs:domain (:Businessman) ;
+ rdfs:domain :Businessman ;
  rdf:type rdf:Property ;
- rdfs:range (:Deal) .
+ rdfs:range :Deal .
 
 :GrainElevator
  rdf:type owl:Class ;
@@ -269,35 +259,25 @@
  owl:equivalentProperty org:hq .
 
 :inc
- rdfs:domain :Organization ;
+ rdfs:domain :FinancialUnit ;
  rdf:type rdf:Property ;
- rdfs:range tm:Money .
+ rdfs:range :Income .
 
 :Income
  rdf:type owl:Class ;
- rdfs:subClassOf :CompanyMonetaryMetrics .
+ rdfs:subClassOf :FinancialUnitMonetaryMetrics .
 
 :Industry
  rdf:type owl:Class .
 
 :industry
- rdfs:domain (:ProductionUnit :Industry :Product) ;
+ rdfs:subPropertyOf :food_industry ;
  rdf:type rdf:Property ;
  rdfs:range :Industry .
 
 :Lab
  rdf:type owl:Class ;
  rdfs:subClassOf :ResearchUnit .
-
-:lat
- owl:equivalentProperty loc:lat ;
- rdf:type rdf:Property ;
- rdfs:range tabtree:Float .
-
-:lon
- owl:equivalentProperty loc:lon ;
- rdf:type rdf:Property ;
- rdfs:range tabtree:Float .
 
 :manager
  rdfs:domain :Person ;
@@ -316,8 +296,7 @@
 :mcap
  rdfs:subPropertyOf :cap ;
  rdfs:comment "Market capitalization" ;
- rdf:type rdf:Property ;
- rdfs:range tm:Money .
+ rdf:type rdf:Property .
 
 :Mean
  rdf:type owl:Class .
@@ -331,10 +310,15 @@
  rdf:type rdf:Property ;
  rdfs:range :ProductionUnit .
 
+:Myaso_в_банке
+ rdf:type :ProductionUnit ;
+ :place :Курган ;
+ :prod :Консервы_мясные_тушеные .
+
 :n
  rdf:type rdf:Property ;
  rdfs:subPropertyOf ta:metrics ;
- rdfs:domain :Organization .
+ rdfs:domain :Company .
 
 :NonOKONHProduct
  rdf:type owl:Class ;
@@ -343,14 +327,12 @@
 :ocap
  rdfs:subPropertyOf :cap ;
  rdfs:comment "Own capital (equity)" ;
- rdf:type rdf:Property ;
- rdfs:range tm:Money .
+ rdf:type rdf:Property .
 
 :oinc
  rdfs:subPropertyOf :inc ;
  rdfs:comment "Operational income - earnings before interest and taxes" ;
- rdf:type rdf:Property ;
- rdfs:range tm:Money .
+ rdf:type rdf:Property .
 
 :okonh
  rdfs:domain :Industry ;
@@ -407,18 +389,10 @@
 :pinc
  rdfs:subPropertyOf :inc ;
  rdfs:comment "Pure income (net income)" ;
- rdf:type rdf:Property ;
- rdfs:range tm:Money .
+ rdf:type rdf:Property .
 
-:place
- rdf:type rdf:Property ;
- owl:equivalentProperty loc:place .
-
-:pop
- rdfs:domain loc:City ;
- rdfs:comment "Number of town dwellers (population)" ;
- rdf:type rdf:Property ;
- rdfs:range rdfs:Literal .
+:Post
+ rdf:type owl:Class .
 
 :president
  rdf:type rdf:Property ;
@@ -449,34 +423,14 @@
  rdf:type owl:Class .
 
 :ProductionUnit
- rdf:type owl:Class ;
- rdfs:subClassOf :Organization .
-
-:Property
  rdf:type owl:Class .
 
-:proving-ground
- rdfs:domain :ProductionUnit ;
- rdf:type rdf:Property ;
- rdfs:range :ProvingGround .
+:PropertyUnit
+ rdf:type owl:Class .
 
 :ProvingGround
  rdf:type owl:Class ;
  rdfs:subClassOf :ResearchUnit .
-
-:rem
- rdf:type rdf:Property ;
- owl:equivalentProperty tabtree:rem .
-
-:repair
- rdfs:domain :ProductionUnit ;
- rdf:type rdf:Property ;
- rdfs:range :Product .
-
-:research-area
- rdfs:domain :ResearchUnit ;
- rdf:type rdf:Property ;
- rdfs:range :Industry .
 
 :ResearchInstitute
  rdf:type owl:Class ;
@@ -489,11 +443,11 @@
 :rev
  rdfs:domain :Organization ;
  rdf:type rdf:Property ;
- rdfs:range tm:Money .
+ rdfs:range :Revenue .
 
 :Revenue
  rdf:type owl:Class ;
- rdfs:subClassOf :CompanyMonetaryMetrics .
+ rdfs:subClassOf :FinancialUnitMonetaryMetrics .
 
 :s
  rdf:type rdf:Property ;
@@ -516,7 +470,7 @@
 :share
  rdfs:domain (:Person :Company) ;
  rdf:type rdf:Property ;
- rdfs:range :Company .
+ rdfs:range :PropertyUnit .
 
 :share-sold
  rdfs:subPropertyOf :sold ;
@@ -531,11 +485,11 @@
  :place :Томск ;
  :prod :Орех_кедровый, :Кедрокофе, :Иван-чай, :Мед_с_кедровым_орехом, :Чабрец, :Мята, :Ромашка, :Золотой_корень, :Лист_смородиновый ;
  :start "2016" ;
- :w "28"^^xsd:integer ;
+ :w :28 ;
  rdf:type :ProductionUnit .
 
 :sid
- rdfs:comment "An idified name the object had in the Soviet time" ;
+ rdfs:comment "An idified name of the production unit in the Soviet time" ;
  rdf:type rdf:Property ;
  rdfs:range :SovietId .
 
@@ -548,12 +502,7 @@
  rdf:type owl:Class ;
  rdfs:subClassOf tabtree:Id .
 
-:sq
- rdf:type rdf:Property ;
- rdfs:range tabtree:Number .
-
 :start
- owl:equivalentProperty time:start ;
  rdf:type rdf:Property ;
  rdfs:range time:Year .
 
@@ -569,216 +518,202 @@
  rdf:subject :Амилко ;
  :year "2022" ;
  rdf:type rdf:Statement ;
- rdf:object "9.6G" ;
+ rdf:object :9.6G ;
  rdf:predicate :rev .
 
 :Stmt_Амилко_w_470
  rdf:subject :Амилко ;
  :year "2022" ;
  rdf:type rdf:Statement ;
- rdf:object "470"^^xsd:integer ;
+ rdf:object :470 ;
  rdf:predicate :w .
 
 :Stmt_Балтика_Челябинск_w_572
  rdf:subject :Балтика_Челябинск ;
  :year "<2014" ;
  rdf:type rdf:Statement ;
- rdf:object "572"^^xsd:integer ;
+ rdf:object :572 ;
  rdf:predicate :w .
 
 :Stmt_Барнаульский_дрожжевой_завод_w_150
  rdf:subject :Барнаульский_дрожжевой_завод ;
  :year "2010" ;
  rdf:type rdf:Statement ;
- rdf:object "150"^^xsd:integer ;
+ rdf:object :150 ;
  rdf:predicate :w .
 
 :Stmt_Березниковский_содовый_завод_w_2250
  rdf:subject :Березниковский_содовый_завод ;
  :year "2010" ;
  rdf:type rdf:Statement ;
- rdf:object "2250"^^xsd:integer ;
+ rdf:object :2250 ;
  rdf:predicate :w .
 
 :Stmt_Булочно-кондитерский_комбинат_Коломенское_rev_1.5G
  rdf:subject :Булочно-кондитерский_комбинат_Коломенское ;
  :year "2009" ;
  rdf:type rdf:Statement ;
- rdf:object "1.5G" ;
+ rdf:object :1.5G ;
  rdf:predicate :rev .
 
 :Stmt_Булочно-кондитерский_комбинат_Коломенское_w_0.8К
  rdf:subject :Булочно-кондитерский_комбинат_Коломенское ;
  :year "2011" ;
  rdf:type rdf:Statement ;
- rdf:object "800"^^xsd:integer ;
+ rdf:object :0.8К ;
  rdf:predicate :w .
 
 :Stmt_ВП_Ливадия_w_377
  rdf:subject :ВП_Ливадия ;
  :year "2012" ;
  rdf:type rdf:Statement ;
- rdf:object "377"^^xsd:integer ;
+ rdf:object :377 ;
  rdf:predicate :w .
 
 :Stmt_ВП_Малореченское_w_302
  rdf:subject :ВП_Малореченское ;
  :year "2012" ;
  rdf:type rdf:Statement ;
- rdf:object "302"^^xsd:integer ;
+ rdf:object :302 ;
  rdf:predicate :w .
 
 :Stmt_ВП_Морское_w_788
  rdf:subject :ВП_Морское ;
  :year "2012" ;
  rdf:type rdf:Statement ;
- rdf:object "788"^^xsd:integer ;
+ rdf:object :788 ;
  rdf:predicate :w .
 
 :Stmt_ВП_Судак_w_372
  rdf:subject :ВП_Судак ;
  :year "2012" ;
  rdf:type rdf:Statement ;
- rdf:object "372"^^xsd:integer ;
+ rdf:object :372 ;
  rdf:predicate :w .
 
 :Stmt_ВП_Таврида_w_333
  rdf:subject :ВП_Таврида ;
  :year "2012" ;
  rdf:type rdf:Statement ;
- rdf:object "333"^^xsd:integer ;
+ rdf:object :333 ;
  rdf:predicate :w .
 
 :Stmt_Гиагинский_молочный_завод_w_477
  rdf:subject :Гиагинский_молочный_завод ;
  :year "2015" ;
  rdf:type rdf:Statement ;
- rdf:object "477"^^xsd:integer ;
+ rdf:object :477 ;
  rdf:predicate :w .
 
 :Stmt_Глубокский_молочноконсервный_комбинат_w_1036
  rdf:subject :Глубокский_молочноконсервный_комбинат ;
  :year "2020" ;
  rdf:type rdf:Statement ;
- rdf:object "1036"^^xsd:integer ;
+ rdf:object :1036 ;
  rdf:predicate :w .
 
 :Stmt_Жигулeвский_пивоваренный_завод_oinc_1.2G
  rdf:subject :Жигулeвский_пивоваренный_завод ;
  :year "2019" ;
  rdf:type rdf:Statement ;
- rdf:object "1.2G" ;
+ rdf:object :1.2G ;
  rdf:predicate :oinc .
 
 :Stmt_Жигулeвский_пивоваренный_завод_pinc_678M
  rdf:subject :Жигулeвский_пивоваренный_завод ;
  :year "2019" ;
  rdf:type rdf:Statement ;
- rdf:object "678M" ;
+ rdf:object :678M ;
  rdf:predicate :pinc .
 
 :Stmt_Жигулeвский_пивоваренный_завод_rev_2.3G
  rdf:subject :Жигулeвский_пивоваренный_завод ;
  :year "2019" ;
  rdf:type rdf:Statement ;
- rdf:object "2.3G" ;
- rdf:predicate :rev .
-
-:Stmt_Жостовская_фабрика_декоративной_росписи_pinc_38.62M
- rdf:subject :Жостовская_фабрика_декоративной_росписи ;
- :year "2022" ;
- rdf:type rdf:Statement ;
- rdf:object "38.62M" ;
- rdf:predicate :pinc .
-
-:Stmt_Жостовская_фабрика_декоративной_росписи_rev_163.27M
- rdf:subject :Жостовская_фабрика_декоративной_росписи ;
- :year "202" ;
- rdf:type rdf:Statement ;
- rdf:object "163.27M" ;
+ rdf:object :2.3G ;
  rdf:predicate :rev .
 
 :Stmt_Завод_Карат_pinc_431M
  rdf:subject :Завод_Карат ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "431M" ;
+ rdf:object :431M ;
  rdf:predicate :pinc .
 
 :Stmt_Завод_Карат_rev_4.2G
  rdf:subject :Завод_Карат ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "4.2G" ;
+ rdf:object :4.2G ;
  rdf:predicate :rev .
 
 :Stmt_Завод_Карат_w_0.6К
  rdf:subject :Завод_Карат ;
  :year "2004" ;
  rdf:type rdf:Statement ;
- rdf:object "600"^^xsd:integer ;
+ rdf:object :0.6К ;
  rdf:predicate :w .
 
 :Stmt_Инкерманский_завод_марочных_вин_pinc_428M
  rdf:subject :Инкерманский_завод_марочных_вин ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "428M" ;
+ rdf:object :428M ;
  rdf:predicate :pinc .
 
 :Stmt_Инкерманский_завод_марочных_вин_rev_1.8G
  rdf:subject :Инкерманский_завод_марочных_вин ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "1.8G" ;
+ rdf:object :1.8G ;
  rdf:predicate :rev .
 
 :Stmt_Иткульский_спиртзавод_w_315
  rdf:subject :Иткульский_спиртзавод ;
  :year "2021" ;
  rdf:type rdf:Statement ;
- rdf:object "315"^^xsd:integer ;
+ rdf:object :315 ;
  rdf:predicate :w .
 
 :Stmt_Казьминский_молочный_комбинат_rev_0.401G
  rdf:subject :Казьминский_молочный_комбинат ;
  :year "2019" ;
  rdf:type rdf:Statement ;
- rdf:object "0.401G" ;
+ rdf:object :0.401G ;
  rdf:predicate :rev .
 
 :Stmt_Казьминский_молочный_комбинат_rev_0.991G
  rdf:subject :Казьминский_молочный_комбинат ;
  :year "2020" ;
  rdf:type rdf:Statement ;
- rdf:object "0.991G" ;
+ rdf:object :0.991G ;
  rdf:predicate :rev .
 
 :Stmt_Казьминский_молочный_комбинат_rev_1.43G
  rdf:subject :Казьминский_молочный_комбинат ;
  :year "2021" ;
  rdf:type rdf:Statement ;
- rdf:object "1.43G" ;
+ rdf:object :1.43G ;
  rdf:predicate :rev .
 
 :Stmt_Казьминский_молочный_комбинат_rev_2.52G
  rdf:subject :Казьминский_молочный_комбинат ;
  :year "2022" ;
  rdf:type rdf:Statement ;
- rdf:object "2.52G" ;
+ rdf:object :2.52G ;
  rdf:predicate :rev .
 
 :Stmt_Казьминский_молочный_комбинат_rev_52M
  rdf:subject :Казьминский_молочный_комбинат ;
  :year "2018" ;
  rdf:type rdf:Statement ;
- rdf:object "52M" ;
+ rdf:object :52M ;
  rdf:predicate :rev .
 
 :Stmt_Калужская_табачная_фабрика_pinc_27.3M
  rdf:subject :Калужская_табачная_фабрика ;
  :year "2022" ;
- rdf:object "27.3M" ;
+ rdf:object :27.3M ;
  rdf:predicate :pinc ;
  :s :RbcCmp ;
  rdf:type rdf:Statement .
@@ -787,312 +722,311 @@
  rdf:subject :Кипринский_молочный_завод ;
  :year "2005" ;
  rdf:type rdf:Statement ;
- rdf:object "200"^^xsd:integer ;
+ rdf:object :0.2К ;
  rdf:predicate :w .
 
 :Stmt_Комбинат_Звездный_rev_830M
  rdf:subject :Комбинат_Звездный ;
  :year "2004" ;
  rdf:type rdf:Statement ;
- rdf:object "830M" ;
+ rdf:object :830M ;
  rdf:predicate :rev .
 
 :Stmt_Комбинат_Звездный_w_1K
  rdf:subject :Комбинат_Звездный ;
  :year "2004" ;
  rdf:type rdf:Statement ;
- rdf:object "1000"^^xsd:integer ;
+ rdf:object :1K ;
  rdf:predicate :w .
 
 :Stmt_Кондитерская_фабрика_Красный_Октябрь_oinc_1.18G
  rdf:subject :Кондитерская_фабрика_Красный_Октябрь ;
  :year "2007" ;
  rdf:type rdf:Statement ;
- rdf:object "1.18G" ;
+ rdf:object :1.18G ;
  rdf:predicate :oinc .
 
 :Stmt_Кондитерская_фабрика_Красный_Октябрь_pinc_1.03G
  rdf:subject :Кондитерская_фабрика_Красный_Октябрь ;
  :year "2007" ;
  rdf:type rdf:Statement ;
- rdf:object "1.03G" ;
+ rdf:object :1.03G ;
  rdf:predicate :pinc .
 
 :Stmt_Кондитерская_фабрика_Красный_Октябрь_rev_4.913G
  rdf:subject :Кондитерская_фабрика_Красный_Октябрь ;
  :year "2007" ;
  rdf:type rdf:Statement ;
- rdf:object "4.913G" ;
+ rdf:object :4.913G ;
  rdf:predicate :rev .
 
 :Stmt_Кондитерская_фабрика_Красный_Октябрь_w_3K
  rdf:subject :Кондитерская_фабрика_Красный_Октябрь ;
  :year "2007" ;
  rdf:type rdf:Statement ;
- rdf:object "3000"^^xsd:integer ;
+ rdf:object :3K ;
  rdf:predicate :w .
 
 :Stmt_Кондитерская_фабрика_Озерский_сувенир_pinc_110M
  rdf:subject :Кондитерская_фабрика_Озерский_сувенир ;
  :year "2022" ;
  rdf:type rdf:Statement ;
- rdf:object "110M" ;
+ rdf:object :110M ;
  rdf:predicate :pinc .
 
 :Stmt_Кондитерская_фабрика_Озерский_сувенир_rev_6.11G
  rdf:subject :Кондитерская_фабрика_Озерский_сувенир ;
  :year "2022" ;
  rdf:type rdf:Statement ;
- rdf:object "6.11G" ;
+ rdf:object :6.11G ;
  rdf:predicate :rev .
 
 :Stmt_Кондитерская_фабрика_Спартак_w_1916
  rdf:subject :Кондитерская_фабрика_Спартак ;
  :year "2016" ;
  rdf:type rdf:Statement ;
- rdf:object "1916"^^xsd:integer ;
+ rdf:object :1916 ;
  rdf:predicate :w .
 
 :Stmt_Курганский_винодельческий_завод_w_0.2К
  rdf:subject :Курганский_винодельческий_завод ;
  :year "2002" ;
  rdf:type rdf:Statement ;
- rdf:object "200"^^xsd:integer ;
+ rdf:object :0.2К ;
  rdf:predicate :w .
 
 :Stmt_Лианозовский_молочный_комбинат_w_2.2К
  rdf:subject :Лианозовский_молочный_комбинат ;
  :year "2015" ;
  rdf:type rdf:Statement ;
- rdf:object "2200"^^xsd:integer ;
+ rdf:object :2.2К ;
  rdf:predicate :w .
 
 :Stmt_Микояновский_мясокомбинат_rev_185M
  rdf:subject :Микояновский_мясокомбинат ;
  :year "1994" ;
  rdf:type rdf:Statement ;
- rdf:object "185M$" ;
+ rdf:object :185M ;
  rdf:predicate :rev .
 
 :Stmt_Минский_хлебозавод_N1_w_300
  rdf:subject :Минский_хлебозавод_N1 ;
  :year "2016" ;
  rdf:type rdf:Statement ;
- rdf:object "300"^^xsd:integer ;
+ rdf:object :300 ;
  rdf:predicate :w .
 
 :Stmt_Молочный_комбинат_Петмол_rev_2.6G
  rdf:subject :Молочный_комбинат_Петмол ;
  :year "2004" ;
  rdf:type rdf:Statement ;
- rdf:object "2.6G" ;
+ rdf:object :2.6G ;
  rdf:predicate :rev .
 
 :Stmt_Московский_жировой_комбинат_w_350
  rdf:subject :Московский_жировой_комбинат ;
  :year "2015" ;
  rdf:type rdf:Statement ;
- rdf:object "350"^^xsd:integer ;
+ rdf:object :350 ;
  rdf:predicate :w .
 
 :Stmt_Московский_маргариновый_завод_w_350
  rdf:subject :Московский_маргариновый_завод ;
  :year "1994" ;
  rdf:type rdf:Statement ;
- rdf:object "350"^^xsd:integer ;
+ rdf:object :350 ;
  rdf:predicate :w .
 
 :Stmt_Мясокомбинат_Белый_Яр_w_130
  rdf:subject :Мясокомбинат_Белый_Яр ;
  :year "<2019" ;
  rdf:type rdf:Statement ;
- rdf:object "130"^^xsd:integer ;
+ rdf:object :130 ;
  rdf:predicate :w .
 
 :Stmt_Мясокомбинат_Самсон_rev_106M
  rdf:subject :Мясокомбинат_Самсон ;
  :year "1994" ;
  rdf:type rdf:Statement ;
- rdf:object "106M$" ;
+ rdf:object :106M ;
  rdf:predicate :rev .
 
 :Stmt_Находкинский_мясокомбинат_pinc_15M
  rdf:subject :Находкинский_мясокомбинат ;
  :year "2010" ;
  rdf:type rdf:Statement ;
- rdf:object "15M" ;
+ rdf:object :15M ;
  rdf:predicate :pinc .
 
 :Stmt_Находкинский_мясокомбинат_rev_770M
  rdf:subject :Находкинский_мясокомбинат ;
  :year "2010" ;
  rdf:type rdf:Statement ;
- rdf:object "770M" ;
+ rdf:object :770M ;
  rdf:predicate :rev .
 
 :Stmt_Находкинский_мясокомбинат_w_350
  rdf:subject :Находкинский_мясокомбинат ;
  :year "2010" ;
  rdf:type rdf:Statement ;
- rdf:object "350"^^xsd:integer ;
+ rdf:object :350 ;
  rdf:predicate :w .
 
 :Stmt_Нижегородский_масложировой_комбинат_rev_30.3G
  rdf:subject :Нижегородский_масложировой_комбинат ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "30.3G" ;
+ rdf:object :30.3G ;
  rdf:predicate :rev .
 
 :Stmt_Новочеркасский_мясокомбинат_pinc_829K
  rdf:subject :Новочеркасский_мясокомбинат ;
  :year "2016" ;
  rdf:type rdf:Statement ;
- rdf:object "829K" ;
+ rdf:object :829K ;
  rdf:predicate :pinc .
 
 :Stmt_Останкинский_завод_бараночных_изделий_w_600
  rdf:subject :Останкинский_завод_бараночных_изделий ;
  :year "2011" ;
  rdf:type rdf:Statement ;
- rdf:object "600"^^xsd:integer ;
+ rdf:object :600 ;
  rdf:predicate :w .
 
 :Stmt_Останкинский_молочный_комбинат_pinc_218M
  rdf:subject :Останкинский_молочный_комбинат ;
  :year "2014" ;
  rdf:type rdf:Statement ;
- rdf:object "218M" ;
+ rdf:object :218M ;
  rdf:predicate :pinc .
 
 :Stmt_Останкинский_молочный_комбинат_rev_7.1G
  rdf:subject :Останкинский_молочный_комбинат ;
  :year "2014" ;
  rdf:type rdf:Statement ;
- rdf:object "7.1G" ;
+ rdf:object :7.1G ;
  rdf:predicate :rev .
 
 :Stmt_Останкинский_молочный_комбинат_w_844
  rdf:subject :Останкинский_молочный_комбинат ;
  :year "2013" ;
  rdf:type rdf:Statement ;
- rdf:object "844"^^xsd:integer ;
+ rdf:object :844 ;
  rdf:predicate :w .
 
 :Stmt_Останкинский_мясоперерабатывающий_комбинат_w_5605
  rdf:subject :Останкинский_мясоперерабатывающий_комбинат ;
  :year "2021" ;
  rdf:type rdf:Statement ;
- rdf:object "5605"^^xsd:integer ;
+ rdf:object :5605 ;
  rdf:predicate :w .
 
 :Stmt_Приморский_кондитер_w_519
  rdf:subject :Приморский_кондитер ;
  :year "2011" ;
  rdf:type rdf:Statement ;
- rdf:object "519"^^xsd:integer ;
+ rdf:object :519 ;
  rdf:predicate :w .
 
 :Stmt_Саратовский_жировой_комбинат_pinc_43M
  rdf:subject :Саратовский_жировой_комбинат ;
  :year "2008" ;
  rdf:type rdf:Statement ;
- rdf:object "43M" ;
+ rdf:object :43M ;
  rdf:predicate :pinc .
 
 :Stmt_Саратовский_жировой_комбинат_rev_9.8G
  rdf:subject :Саратовский_жировой_комбинат ;
  :year "2008" ;
  rdf:type rdf:Statement ;
- rdf:object "9.8G" ;
+ rdf:object :9.8G ;
  rdf:predicate :rev .
 
 :Stmt_Светлоярский_завод_белково-витаминных_концентратов_w_2572
  rdf:subject :Светлоярский_завод_белково-витаминных_концентратов ;
  :year "1987" ;
  rdf:type rdf:Statement ;
- rdf:object "2572"^^xsd:integer ;
+ rdf:object :2572 ;
  rdf:predicate :w .
 
 :Stmt_Сочинский_мясокомбинат_oinc_2G
  rdf:subject :Сочинский_мясокомбинат ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "2G" ;
+ rdf:object :2G ;
  rdf:predicate :oinc .
 
 :Stmt_Сочинский_мясокомбинат_pinc_173M
  rdf:subject :Сочинский_мясокомбинат ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "173M" ;
+ rdf:object :173M ;
  rdf:predicate :pinc .
 
 :Stmt_Сочинский_мясокомбинат_rev_4.6G
  rdf:subject :Сочинский_мясокомбинат ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "4.6G" ;
+ rdf:object :4.6G ;
  rdf:predicate :rev .
 
 :Stmt_Таганрогский_рыбоперерабатывающий_завод_w_290
  rdf:subject :Таганрогский_рыбоперерабатывающий_завод ;
  :year "1997" ;
  rdf:type rdf:Statement ;
- rdf:object "290"^^xsd:integer ;
+ rdf:object :290 ;
  rdf:predicate :w .
 
 :Stmt_Хлебозавод_N9_w_147
  rdf:subject :Хлебозавод_N9 ;
  :year "2015" ;
  rdf:type rdf:Statement ;
- rdf:object "147"^^xsd:integer ;
+ rdf:object :147 ;
  rdf:predicate :w .
 
 :Stmt_Хлебозавод_Москворечье_w_600
  rdf:subject :Хлебозавод_Москворечье ;
  :year "2001" ;
  rdf:type rdf:Statement ;
- rdf:object "600"^^xsd:integer ;
+ rdf:object :600 ;
  rdf:predicate :w .
 
 :Stmt_Хлебозавод_Черкизово_pinc_26.4M
  rdf:subject :Хлебозавод_Черкизово ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "26.4M" ;
+ rdf:object :26.4M ;
  rdf:predicate :pinc .
 
 :Stmt_Хлебозавод_Черкизово_rev_737M
  rdf:subject :Хлебозавод_Черкизово ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "737M" ;
+ rdf:object :737M ;
  rdf:predicate :rev .
 
 :Stmt_Хлебозавод_Черкизово_w_264
  rdf:subject :Хлебозавод_Черкизово ;
  :year "2017" ;
  rdf:type rdf:Statement ;
- rdf:object "264"^^xsd:integer ;
+ rdf:object :264 ;
  rdf:predicate :w .
 
 :Stmt_Хлебообъединение_Восход_pinc_13.3M
  rdf:subject :Хлебообъединение_Восход ;
  :year "2022" ;
  rdf:type rdf:Statement ;
- rdf:object "13.3M" ;
+ rdf:object :13.3M ;
  rdf:predicate :pinc .
 
 :Stmt_Хлебообъединение_Восход_rev_1.7G
  rdf:subject :Хлебообъединение_Восход ;
  :year "2022" ;
  rdf:type rdf:Statement ;
- rdf:object "1.7G" ;
+ rdf:object :1.7G ;
  rdf:predicate :rev .
 
 :stop
- rdfs:subPropertyOf time:stop ;
  rdf:type rdf:Property ;
  rdfs:range time:Year .
 
@@ -1120,9 +1054,9 @@ tabtree:Id
  rdf:type owl:Class .
 
 :to
- rdfs:domain (:Businessman) ;
+ rdfs:domain :Businessman ;
  rdf:type rdf:Property ;
- rdfs:range (:Deal) .
+ rdfs:range :Deal .
 
 :TradeUnit
  rdf:type owl:Class ;
@@ -1133,37 +1067,24 @@ tabtree:Id
  rdfs:subClassOf tabtree:Id .
 
 :tsid
- rdfs:comment "An idified name the object had before the Revolution" ;
+ rdfs:comment "An idified name of the production unit before the Revolution by the time of Tsar Government, or by the time of bourgeois Provisional Government in 1917" ;
  rdf:type rdf:Property ;
  rdfs:range :TsarTimeId .
-
-:unit
- rdf:type rdf:Property ;
- owl:equivalentProperty tabtree:unit .
 
 :url
  owl:equivalentProperty media:url ;
  rdf:type rdf:Property ;
  rdfs:range media:Url .
 
-:used-by
- rdfs:domain :MineralDeposit ;
- rdf:type rdf:Property ;
- rdfs:range :Company .
-
 :VIHolding
  rdf:type owl:Class ;
  rdfs:subClassOf :Holding ;
- rdfs:label "Vertically Integrated Holding" .
+ dc:title "Vertically Integrated Holding" .
 
 :w
- rdfs:domain :Organization ;
+ rdfs:domain :ProductionUnit ;
  rdf:type rdf:Property ;
- rdfs:range tabtree:Integer .
-
-:y
- rdf:type rdf:Property ;
- owl:equivalentProperty :year .
+ rdfs:range tabtree:PositiveInteger .
 
 :year
  owl:equivalentProperty time:year ;
@@ -1182,7 +1103,7 @@ tabtree:Id
 :Агропредприятие_Рыжово
  :place :Рыжово_Московская ;
  :start "2008" ;
- :w "45"^^xsd:integer ;
+ :w :45 ;
  rdf:type :ProductionUnit .
 
 :Агропредприятие_Щапово
@@ -1191,6 +1112,12 @@ tabtree:Id
  :sid :ОП_ВНИИ_животноводства ;
  :start "1962" .
 
+:Агропромсервис
+ :place :Первомайский_Удмуртская ;
+ :prod :Мясо_говядины ;
+ :w :11 ;
+ rdf:type :ProductionUnit .
+
 :Аджика
  rdf:type :Product ;
  :case-of :Приправа .
@@ -1198,12 +1125,13 @@ tabtree:Id
 :Адлерская_чайная_фабрика
  rdf:type :ProductionUnit ;
  :place :Сочи ;
+ :prod :Чай ;
  :start "1953" .
 
 :Акконд
  :place :Чебоксары ;
  :start "1943" ;
- :w "2000"^^xsd:integer ;
+ :w :2K ;
  rdf:type :ProductionUnit .
 
 :Алейский_сахарный_завод
@@ -1217,9 +1145,9 @@ tabtree:Id
 
 :Амилко
  :place :Миллерово ;
- :rev "9.6G" ;
+ :rev :9.6G ;
  :start "2006" ;
- :w "470"^^xsd:integer ;
+ :w :470 ;
  rdf:type :ProductionUnit .
 
 :Арбуз
@@ -1239,6 +1167,7 @@ tabtree:Id
 :Астраханский_рыбоконсервно-холодильный_комбинат
  rdf:type :ProductionUnit ;
  :place :Астрахань ;
+ :prod :Консервы_рыбные ;
  :start "1931" .
 
 :Атмис-сахар
@@ -1267,12 +1196,13 @@ tabtree:Id
  :place :Челябинск ;
  :prod :Пиво ;
  :start "1969" ;
- :w "572"^^xsd:integer ;
+ :w :572 ;
  rdf:type :ProductionUnit .
 
 :Барнаульский_дрожжевой_завод
+ :prod :Дрожжи ;
  :start "1914" ;
- :w "150"^^xsd:integer ;
+ :w :150 ;
  rdf:type :ProductionUnit .
 
 :Башкирская_содовая_компания
@@ -1294,13 +1224,14 @@ tabtree:Id
 :Берeзовский_сыродельный_комбинат
  rdf:type :ProductionUnit ;
  :place :Береза ;
+ :prod :Сыр ;
  :start "1944" .
 
 :Березниковский_содовый_завод
  :place :Березники ;
  :prod :Cода ;
  :start "1883" ;
- :w "2250"^^xsd:integer ;
+ :w :2250 ;
  rdf:type :ProductionUnit .
 
 :Бийский_сахарный_завод
@@ -1312,25 +1243,27 @@ tabtree:Id
  rdf:type :Product ;
  :case-of :Продукт_кисломолочный .
 
+:Благодарин
+ rdf:type :ProductionUnit ;
+ :place :Краснодар ;
+ :brand :Вкусрус ;
+ :prod :Масло_растительное .
+
 :Бокинский_сахарный_завод
  rdf:type :ProductionUnit ;
  :place :Тамбов ;
  :prod :Сахар .
 
-:Бриджтаун_фудс
- rdf:type :ProductionUnit ;
- :brand :Три_корочки .
-
 :Брынза
  :industry :Маслодельная_сыродельная_и_молочная_промышленность .
 
 :Брянский_мясокомбинат
- :pinc "7.9M" ;
+ :pinc :7.9M ;
  :start "1935" ;
- :w "341"^^xsd:integer ;
+ :w :341 ;
  rdf:type :ProductionUnit ;
  :place :Брянск ;
- :oinc "56M" .
+ :oinc :56M .
 
 :Бугринский_солодовенный_завод
  rdf:type :ProductionUnit ;
@@ -1346,15 +1279,15 @@ tabtree:Id
 :Булочно-Кондитерский_Комбинат
  :place :Киров ;
  :prod :Пряник, :Торт ;
- :w "361"^^xsd:integer ;
+ :w :361 ;
  rdf:type :ProductionUnit .
 
 :Булочно-кондитерский_комбинат_Коломенское
  :place :Москва ;
- :rev "1.5G" ;
+ :rev :1.5G ;
  :sid :Хлебозавод_N15 ;
  :start "1956" ;
- :w "800"^^xsd:integer ;
+ :w :0.8К ;
  rdf:type :ProductionUnit .
 
 :Бусиновский_мясокомбинат
@@ -1369,9 +1302,9 @@ tabtree:Id
 :Великолукский_мясокомбинат
  :place :Великие_Луки ;
  :prod :Консервы_мясные, :Колбаса_мясная, :Сосиски, :Сало, :Грудинка ;
- :rev "11G" ;
+ :rev :11G ;
  :start "1944" ;
- :w "10500"^^xsd:integer ;
+ :w :10500 ;
  rdf:type :ProductionUnit .
 
 :Вельта-Пенза
@@ -1400,14 +1333,14 @@ tabtree:Id
  :place :Владивосток ;
  :prod :Конфеты, :Торт, :Печенье ;
  :start "1906" ;
- :w "498"^^xsd:integer ;
+ :w :498 ;
  rdf:type :ProductionUnit .
 
 :Владимирский_комбинат_хлебопродуктов_Мукомол
  :place :Владимир ;
- :prod :Макароны, :Комбикорм ;
+ :prod :Макароны, :Комбикорм, :Мука_пшеничная, :Мука_ржано-обдирная, :Изделие_макаронное ;
  :start "1956" ;
- :w "212"^^xsd:integer ;
+ :w :212, :220 ;
  rdf:type :ProductionUnit .
 
 :Вода_минеральная
@@ -1436,32 +1369,35 @@ tabtree:Id
 :Волжский_пивоваренный_завод
  rdf:type :ProductionUnit ;
  :place :Волжский ;
+ :prod :Пиво ;
  :start "1977" .
 
 :Вологодский_хлебокомбинат
  :place :Вологда ;
  :prod :Хлеб, :Сдоба, :Квас_сухой_хлебный, :Круассан ;
- :w "632"^^xsd:integer ;
+ :w :632 ;
  rdf:type :ProductionUnit .
 
 :Воронежская_кондитерская_фабрика
  :place :Воронеж ;
  :prod :Торт, :Вафли, :Зефир, :Карамель, :Конфеты_шоколадные_Конфеты_желейные, :Конфеты_в_коробке, :Печенье, :Шоколад ;
- :rev "3.2G" ;
- :pinc "308M" ;
+ :rev :3.2G ;
+ :pinc :308M ;
  :start "1934" ;
- :w "1255"^^xsd:integer ;
+ :w :1255 ;
  rdf:type :ProductionUnit .
 
 :Воронежский_пивзавод
  rdf:type :ProductionUnit ;
  :place :Воронеж ;
+ :prod :Пиво ;
  :start "1936" .
 
 :Воронежский_сахарный_завод
  :end "2010" ;
  rdf:type :ProductionUnit ;
  :place :Воронеж ;
+ :prod :Сахар ;
  :start "185x" .
 
 :Восточные_сладости
@@ -1472,35 +1408,35 @@ tabtree:Id
  :place :Алушта ;
  :prod :Вино ;
  :start "1889" ;
- :w "334"^^xsd:integer ;
+ :w :334 ;
  rdf:type :ProductionUnit .
 
 :ВП_Гурзуф
  :place :Гурзуф ;
  :prod :Вино ;
  :start "1921" ;
- :w "311"^^xsd:integer ;
+ :w :311 ;
  rdf:type :ProductionUnit .
 
 :ВП_Ливадия
  :place :Ливадия ;
  :prod :Вино ;
  :start "1920" ;
- :w "377"^^xsd:integer ;
+ :w :377 ;
  rdf:type :ProductionUnit .
 
 :ВП_Малореченское
  :place :Малореченское ;
  :prod :Вино ;
  :start "1957" ;
- :w "302"^^xsd:integer ;
+ :w :302 ;
  rdf:type :ProductionUnit .
 
 :ВП_Морское
  :place :Морское ;
  :prod :Вино ;
  :start "1960" ;
- :w "788"^^xsd:integer ;
+ :w :788 ;
  rdf:type :ProductionUnit .
 
 :ВП_Приветное
@@ -1514,39 +1450,47 @@ tabtree:Id
  :prod :Вино ;
  :sid :Совхоз-завод_Солнечная_Долина ;
  :start "1888" ;
- :w "300"^^xsd:integer ;
+ :w :300 ;
  rdf:type :ProductionUnit .
 
 :ВП_Судак
  :place :Судак ;
  :prod :Вино ;
  :start "1920" ;
- :w "372"^^xsd:integer ;
+ :w :372 ;
  rdf:type :ProductionUnit .
 
 :ВП_Таврида
  :place :Кипарисное ;
  :prod :Вино ;
  :start "1936" ;
- :w "333"^^xsd:integer ;
+ :w :333 ;
  rdf:type :ProductionUnit .
 
 :Гиагинский_молочный_завод
  :place :Гиагинская ;
  :prod :Сыр ;
- :rev "1.5G" ;
+ :rev :1.5G ;
  :start "1949" ;
- :w "477"^^xsd:integer ;
+ :w :477 ;
  rdf:type :ProductionUnit .
 
 :Гирей-Сахар
  rdf:type :ProductionUnit ;
- :place :Гирей .
+ :place :Гирей ;
+ :prod :Сахар .
+
+:Главобедсервис
+ rdf:type :ProductionUnit ;
+ :place :Златоуст ;
+ :brand :Главобед, :Главсуп, :Главсуп_премиум ;
+ :prod :Блюдо_готовое_быстрозамороженное ;
+ :start "2002" .
 
 :Глубокский_молочноконсервный_комбинат
  :place :Глубокое_Витебская ;
  :start "1972" ;
- :w "1036"^^xsd:integer ;
+ :w :1036 ;
  rdf:type :ProductionUnit .
 
 :Глюкоза
@@ -1559,11 +1503,13 @@ tabtree:Id
 
 :Городейский_сахарный_комбинат
  rdf:type :ProductionUnit ;
- :place :Городея .
+ :place :Городея ;
+ :prod :Сахар .
 
 :Грибановский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Грибановский .
+ :place :Грибановский ;
+ :prod :Сахар .
 
 :Грудинка
  rdf:type :Product ;
@@ -1571,19 +1517,23 @@ tabtree:Id
 
 :Грязинский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Грязи .
+ :place :Грязи ;
+ :prod :Сахар .
 
 :Дмитровский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Горшково_Московская .
+ :place :Горшково_Московская ;
+ :prod :Сахар .
 
 :Дмитротарановский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Октябрьский_Белгородская .
+ :place :Октябрьский_Белгородская ;
+ :prod :Сахар .
 
 :Добринский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Плавица_Липецкая .
+ :place :Плавица_Липецкая ;
+ :prod :Сахар .
 
 :Дольки_мармеладные
  rdf:type :Product ;
@@ -1603,8 +1553,14 @@ tabtree:Id
  :okonh :18147 ;
  :industry :Пищевкусовая_промышленность .
 
+:Дрожжи
+ rdf:type :Product ;
+ :case-of :Пищевой_продукт .
+
 :Дрожжи_пекарские
- :industry :Дрожжевая_промышленность .
+ rdf:type :Product ;
+ :case-of :Дрожжевая_промышленность, :Дрожжи ;
+ :industry :Дрожжевая_промышленность, :Дрожжи .
 
 :Дыня
  rdf:type :Product ;
@@ -1612,44 +1568,42 @@ tabtree:Id
 
 :Елань-Коленовский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Елань-Коленовский .
+ :place :Елань-Коленовский ;
+ :prod :Сахар .
 
 :Елецкий_сахарный_завод
  rdf:type :ProductionUnit ;
  :place :Елец ;
+ :prod :Сахар ;
  :start "1965" .
 
 :Жабинковский_сахарный_комбинат
  rdf:type :ProductionUnit ;
- :place :Жабинка .
+ :place :Жабинка ;
+ :prod :Сахар .
 
 :Желатин
- :industry :Клеежелатиновая_промышленность .
+ rdf:type :Product ;
+ :case-of :Клеежелатиновая_промышленность, :Пищевой_продукт ;
+ :industry :Клеежелатиновая_промышленность, :Пищевой_продукт .
 
 :Жигулeвский_пивоваренный_завод
- :rev "2.3G" ;
- :pinc "678M" ;
+ :prod :Пиво ;
+ :rev :2.3G ;
+ :pinc :678M ;
  :start "1881" ;
- :w "633"^^xsd:integer ;
+ :w :633 ;
  rdf:type :ProductionUnit ;
  :place :Самара ;
- :oinc "1.2G" .
-
-:Жостовская_фабрика_декоративной_росписи
- :place :Жостово ;
- :rev "163.27M" ;
- :pinc "38.62M" ;
- :start "1825" ;
- :w "78"^^xsd:integer ;
- rdf:type :ProductionUnit .
+ :oinc :1.2G .
 
 :Завод_Карат
  :place :Москва ;
  :prod :Сыр_плавленный ;
- :rev "4.2G" ;
- :pinc "431M" ;
+ :rev :4.2G ;
+ :pinc :431M ;
  :start "1934" ;
- :w "600"^^xsd:integer ;
+ :w :0.6К ;
  rdf:type :ProductionUnit .
 
 :Завод_Коктебель
@@ -1667,14 +1621,20 @@ tabtree:Id
 :Завод_пищевых_ингредиентов_Гамми
  rdf:type :ProductionUnit ;
  :place :Лысково ;
- :prod :Концентрат_пищевой .
+ :prod :Концентрат_пищевой, :БАД .
+
+:Завод_растительных_масел_1Корм
+ rdf:type :ProductionUnit ;
+ :place :Сизево ;
+ :prod :Масло_рапсовое, :Жмых_рапсовый ;
+ :start "2016" .
 
 :Завод_Уссурийский_бальзам
  :place :Уссурийск ;
  :tsid :Павлиновский_винокуренный_завод ;
- :prod :Алкоголь ;
+ :prod :Напиток_алкогольный ;
  :start "1894" ;
- :w "540"^^xsd:integer ;
+ :w :540 ;
  rdf:type :ProductionUnit .
 
 :Заинский_сахар
@@ -1712,9 +1672,9 @@ tabtree:Id
  rdf:type :ProductionUnit ;
  :place :Ржев ;
  :brand :Баренцев ;
- :prod :Морепродукты ;
- :rev "2.2G" ;
- :pinc "442M" .
+ :prod :Морепродукт ;
+ :rev :2.2G ;
+ :pinc :442M .
 
 :Иван-чай
  rdf:type :Product ;
@@ -1758,12 +1718,25 @@ tabtree:Id
  :prod :Соль_пищевая ;
  :start "1881" .
 
+:Индиго_мясоперерабатывающий_комплекс
+ rdf:type :ProductionUnit ;
+ :place :Люберцы ;
+ :company :Индиго ;
+ :prod :Мясо_свинины, :Мясо_говядины, :Полуфабрикат_мясной .
+
+:Индиго_рыбоперерабатывающий_комплекс
+ rdf:type :ProductionUnit ;
+ :place :Ногинск ;
+ :company :Индиго ;
+ :prod :Окунь_филе, :Кальмар_тушка, :Путассу_тушка, :Нерка_стейк, :Кальмар_филе, :Форель_стейк, :Хек_тушка, :Минтай_тушка, :Полуфабрикат_рыбный .
+
 :Инкерманский_завод_марочных_вин
  :place :Севастополь ;
- :rev "1.8G" ;
- :pinc "428M" ;
+ :prod :Вино ;
+ :rev :1.8G ;
+ :pinc :428M ;
  :start "1961" ;
- :w "1300"^^xsd:integer ;
+ :w :1300 ;
  rdf:type :ProductionUnit .
 
 :Ирис
@@ -1774,6 +1747,7 @@ tabtree:Id
  :end "1996" ;
  rdf:type :ProductionUnit ;
  :place :Иркутск ;
+ :prod :Чай ;
  :start "1932" .
 
 :Иркутский_масложиркомбинат
@@ -1784,26 +1758,28 @@ tabtree:Id
 :Искитимский_кондитер
  :place :Новосибирск ;
  :prod :Печенье_многослойное, :Зефир, :Мармелад, :Пастила ;
- :w "6"^^xsd:integer ;
+ :w :6 ;
  rdf:type :ProductionUnit .
 
 :Иткульский_спиртзавод
  :place :Соколово_Алтайский ;
+ :prod :Спирт ;
  :start "1868" ;
- :w "315"^^xsd:integer ;
+ :w :315 ;
  rdf:type :ProductionUnit .
 
 :Ишимский_винно-водочный_завод
  :stop "2021" ;
  rdf:type :ProductionUnit ;
  :place :Ишим ;
+ :prod :Напиток_алкогольный ;
  :start "1902" .
 
 :Йошкар-Олинская_кондитерская_фабрика
  :place :Йошкар-Ола ;
  :prod :Вафли, :Конфеты, :Ирис ;
  :start "1944" ;
- :w "318"^^xsd:integer ;
+ :w :318 ;
  rdf:type :ProductionUnit .
 
 :Казеин
@@ -1811,9 +1787,10 @@ tabtree:Id
 
 :Казьминский_молочный_комбинат
  :place :Невинномысск ;
- :rev "52M", "0.401G", "0.991G", "1.43G", "2.52G" ;
+ :prod :Молоко ;
+ :rev :52M, :0.401G, :0.991G, :1.43G, :2.52G ;
  :start "2016" ;
- :w "246"^^xsd:integer ;
+ :w :246 ;
  rdf:type :ProductionUnit .
 
 :Какао
@@ -1822,16 +1799,29 @@ tabtree:Id
 
 :Калужская_табачная_фабрика
  :place :Калуга ;
- :pinc "27.3M" ;
+ :pinc :27.3M ;
  :start "2017" ;
- :w "71"^^xsd:integer ;
+ :w :71 ;
  rdf:type :ProductionUnit .
 
 :Калужский_хлебокомбинат
  :place :Калуга ;
+ :prod :Изделие_хлебобулочное ;
  :start "1936" ;
- :w "567"^^xsd:integer ;
+ :w :567 ;
  rdf:type :ProductionUnit .
+
+:Кальмар
+ rdf:type :Product ;
+ :case-of :Моллюск .
+
+:Кальмар_тушка
+ rdf:type :Product ;
+ :case-of :Кальмар .
+
+:Кальмар_филе
+ rdf:type :Product ;
+ :case-of :Кальмар .
 
 :Каневсксахар
  rdf:type :ProductionUnit ;
@@ -1841,6 +1831,7 @@ tabtree:Id
 :Канская_табачная_фабрика
  rdf:type :ProductionUnit ;
  :place :Канск ;
+ :prod :Сигареты ;
  :start "1942" .
 
 :Карамель
@@ -1870,7 +1861,8 @@ tabtree:Id
 :КДВ_Краснодар
  rdf:type :ProductionUnit ;
  :place :Белая_глина ;
- :brand :Бабкины_семечки .
+ :brand :Бабкины_семечки ;
+ :prod :Семена_подсолнечника_жареные .
 
 :Кедрокофе
  rdf:type :Product ;
@@ -1898,8 +1890,9 @@ tabtree:Id
 
 :Кипринский_молочный_завод
  :place :Барнаул ;
+ :prod :Молоко ;
  :start "2003" ;
- :w "200"^^xsd:integer ;
+ :w :0.2К ;
  rdf:type :ProductionUnit .
 
 :Кисель
@@ -1937,21 +1930,22 @@ tabtree:Id
  :place :Колмогорово ;
  :sid :Колмогоровская_птицефабрика ;
  :start "1969" ;
- :w "250"^^xsd:integer ;
+ :w :250 ;
  rdf:type :ProductionUnit .
 
 :Колхоз_Горшиха
  :place :Медягино_Ярославская ;
  :start "1936" ;
- :w "250"^^xsd:integer ;
+ :w :250 ;
  rdf:type :ProductionUnit .
 
 :Комбинат_Звездный
  :place :Москва ;
- :rev "830M" ;
+ :prod :Изделие_хлебобулочное ;
+ :rev :830M ;
  :sid :Хлебозавод_N11 ;
  :start "1937" ;
- :w "1000"^^xsd:integer ;
+ :w :1K ;
  rdf:type :ProductionUnit .
 
 :Кондитерская_промышленность
@@ -1962,7 +1956,7 @@ tabtree:Id
  :place :Брянск ;
  :prod :Вафли, :Торт, :Печенье_сахарное, :Сушка ;
  :start "1954" ;
- :w "333"^^xsd:integer ;
+ :w :333 ;
  rdf:type :ProductionUnit .
 
 :Кондитерская_фабрика_Волжанка
@@ -1974,13 +1968,13 @@ tabtree:Id
  :place :Курганинск ;
  :prod :Вафли, :Рахат-Лукум, :Зефир, :Карамель, :Конфеты, :Печенье, :Пряник, :Сухари ;
  :start "1936" ;
- :w "200"^^xsd:integer ;
+ :w :200 ;
  rdf:type :ProductionUnit .
 
 :Кондитерская_фабрика_им_Самойловой
  :place :Санкт-Петербург ;
  :start "1862" ;
- :w "500"^^xsd:integer ;
+ :w :500 ;
  rdf:type :ProductionUnit .
 
 :Кондитерская_фабрика_Конфи
@@ -1992,7 +1986,7 @@ tabtree:Id
  :place :Волгоград ;
  :prod :Зефир-фарфалле, :Торт_вафельный, :Вафли, :Карамель, :Конфеты_в_коробке, :Шоколад, :Конфеты_ручной_работы ;
  :start "1887" ;
- :w "637"^^xsd:integer ;
+ :w :637 ;
  rdf:type :ProductionUnit .
 
 :Кондитерская_фабрика_Красная_звезда
@@ -2008,25 +2002,25 @@ tabtree:Id
 
 :Кондитерская_фабрика_Красный_Октябрь
  :end "2007" ;
- :rev "4.913G" ;
- :pinc "1.03G" ;
+ :rev :4.913G ;
+ :pinc :1.03G ;
  :start "1889" ;
- :w "3000"^^xsd:integer ;
+ :w :3K ;
  rdf:type :ProductionUnit ;
  :place :Москва ;
- :oinc "1.18G" .
+ :oinc :1.18G .
 
 :Кондитерская_фабрика_Озерский_сувенир
  :place :Озеры ;
- :rev "6.11G" ;
- :pinc "110M" ;
- :w "743"^^xsd:integer ;
+ :rev :6.11G ;
+ :pinc :110M ;
+ :w :743 ;
  rdf:type :ProductionUnit .
 
 :Кондитерская_фабрика_Спартак
  :place :Гомель ;
  :start "1924" ;
- :w "1916"^^xsd:integer ;
+ :w :1916 ;
  rdf:type :ProductionUnit .
 
 :Кондитерский_комбинат_Черeмушки
@@ -2043,7 +2037,7 @@ tabtree:Id
 :Кондитерское_производство_Север
  :place :Санкт-Петербург ;
  :start "1903" ;
- :w "700"^^xsd:integer ;
+ :w :700 ;
  rdf:type :ProductionUnit .
 
 :Консервы_молочные
@@ -2057,7 +2051,9 @@ tabtree:Id
  :industry :Производство_плодоовощных_консервов .
 
 :Консервы_рыбные
- :industry :Рыбная_промышленность .
+ rdf:type :Product ;
+ :case-of :Рыбная_промышленность, :Рыбный_продукт ;
+ :industry :Рыбная_промышленность, :Рыбный_продукт .
 
 :Конфеты
  rdf:type :Product ;
@@ -2130,6 +2126,12 @@ tabtree:Id
  rdf:type :ProductionUnit ;
  :place :Красная_Яруга .
 
+:Крафт_леденец
+ rdf:type :ProductionUnit ;
+ :place :Переславь-Залесский ;
+ :url <ledenec-pereslavl.ru> ;
+ :prod :Леденец .
+
 :Крахмал
  :industry :Крахмало-паточная_промышленность .
 
@@ -2162,8 +2164,9 @@ tabtree:Id
 :Курганский_винодельческий_завод
  :end "2013" ;
  :place :Курган ;
+ :prod :Вино ;
  :start "1972" ;
- :w "200"^^xsd:integer ;
+ :w :0.2К ;
  rdf:type :ProductionUnit .
 
 :Курганский_мясокомбинат_Стандарт
@@ -2175,21 +2178,24 @@ tabtree:Id
 :Курганский_пивоваренный_завод
  rdf:type :ProductionUnit ;
  :place :Курган ;
+ :prod :Пиво ;
  :start "1913" .
 
 :Курская_кондитерская_фабрика
  :place :Курск ;
  :start "1998" ;
- :w "3000"^^xsd:integer ;
+ :w :3К ;
  rdf:type :ProductionUnit .
 
 :Курсксахарпром
  rdf:type :ProductionUnit ;
- :place :Солнечный_Курская .
+ :place :Солнечный_Курская ;
+ :prod :Сахар .
 
 :Кшенский_сахарный_комбинат
  rdf:type :ProductionUnit ;
- :place :Кшенский .
+ :place :Кшенский ;
+ :prod :Сахар .
 
 :Лапша_быстрого_приготовления
  rdf:type :Product ;
@@ -2201,12 +2207,14 @@ tabtree:Id
 
 :Лебедянский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Поселок_Сахарного_завода .
+ :place :Поселок_Сахарного_завода ;
+ :prod :Сахар .
 
 :Левашовский_хлебозавод
  :end "2012" ;
  rdf:type :ProductionUnit ;
  :place :Санкт-Петербург ;
+ :prod :Изделие_хлебобулочное ;
  :start "1933" .
 
 :Лецитин
@@ -2219,8 +2227,9 @@ tabtree:Id
 
 :Лианозовский_молочный_комбинат
  :place :Москва ;
+ :prod :Молоко ;
  :start "1989" ;
- :w "2200"^^xsd:integer ;
+ :w :2.2К ;
  rdf:type :ProductionUnit .
 
 :Ликер
@@ -2243,12 +2252,14 @@ tabtree:Id
 :Лисичанский_желатиновый_завод
  rdf:type :ProductionUnit ;
  :place :Лисичанск ;
+ :prod :Желатин ;
  :start "1968" .
 
 :Лисичанский_комбинат_хлебопродуктов
  :end "2008" ;
  rdf:type :ProductionUnit ;
  :place :Лисичанск ;
+ :prod :Изделие_хлебобулочное ;
  :start "1961" .
 
 :Лисичанский_мясокомбинат
@@ -2268,14 +2279,16 @@ tabtree:Id
 
 :Луховицкий_мукомольный_завод
  :place :Луховицы ;
+ :prod :Мука ;
  :start "1936" ;
- :w "100"^^xsd:integer ;
+ :w :100 ;
  rdf:type :ProductionUnit .
 
 :Лысковский_пивоваренный_завод
  :place :Лысково ;
+ :prod :Пиво ;
  :start "1860" ;
- :w "1300"^^xsd:integer ;
+ :w :1.3К ;
  rdf:type :ProductionUnit .
 
 :Майонез
@@ -2295,7 +2308,7 @@ tabtree:Id
  :place :Санкт-Петербург ;
  :prod :Пирожные_макарон ;
  :start "2013" ;
- :w "6"^^xsd:integer ;
+ :w :6 ;
  rdf:type :ProductionUnit .
 
 :Макароны
@@ -2348,6 +2361,7 @@ tabtree:Id
 :Мацестинская_чайная_фабрика
  rdf:type :ProductionUnit ;
  :place :Сочи ;
+ :prod :Чай ;
  :start "1947" .
 
 :Мед
@@ -2360,11 +2374,13 @@ tabtree:Id
 
 :Мелеузовский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Мелеуз .
+ :place :Мелеуз ;
+ :prod :Сахар .
 
 :Мелитопольский_пивоваренный_завод
  rdf:type :ProductionUnit ;
  :place :Мелитополь ;
+ :prod :Пиво ;
  :start "1966" .
 
 :Меловский_завод_рафинированных_масел
@@ -2375,20 +2391,34 @@ tabtree:Id
 :Микояновский_мясокомбинат
  rdf:type :ProductionUnit ;
  :place :Москва ;
- :rev "185M$" ;
+ :rev :185M ;
  :start "1798" .
 
 :Минский_хлебозавод_N1
  :end "2016" ;
  :place :Минск ;
+ :prod :Изделие_хлебобулочное ;
  :start "1927" ;
- :w "300"^^xsd:integer ;
+ :w :300 ;
  rdf:type :ProductionUnit .
+
+:Минтай
+ rdf:type :Product ;
+ :case-of :Рыба .
+
+:Минтай_тушка
+ rdf:type :Product ;
+ :case-of :Минтай .
 
 :Мозырский_пивоваренный_завод
  rdf:type :ProductionUnit ;
  :place :Мозырь ;
+ :prod :Пиво ;
  :start "1885" .
+
+:Моллюск
+ rdf:type :Product ;
+ :case-of :Рыбный_продукт .
 
 :Молоко
  rdf:type :Product ;
@@ -2398,7 +2428,7 @@ tabtree:Id
  :place :Курган ;
  :prod :Молоко ;
  :start "2000" ;
- :w "225"^^xsd:integer ;
+ :w :225 ;
  rdf:type :ProductionUnit .
 
 :Молоко_концентрированное
@@ -2432,7 +2462,7 @@ tabtree:Id
  rdf:type :ProductionUnit ;
  :place :Санкт-Петербург ;
  :prod :Молоко ;
- :rev "2.6G" ;
+ :rev :2.6G ;
  :start "1934" .
 
 :Молочный_комбинат_Ялуторовский
@@ -2442,7 +2472,9 @@ tabtree:Id
  :start "1936" .
 
 :Морепродукт
- :industry :Рыбная_промышленность .
+ rdf:type :Product ;
+ :case-of :Рыбная_промышленность, :Пищевой_продукт ;
+ :industry :Рыбная_промышленность, :Пищевой_продукт .
 
 :Мороженое
  rdf:type :Product ;
@@ -2461,41 +2493,55 @@ tabtree:Id
  :end "2005" ;
  rdf:type :ProductionUnit ;
  :place :Москва ;
+ :prod :Пиво ;
  :start "1959" .
 
 :Московская_чайная_фабрика
  :place :Москва ;
  :prod :Чай_со_слоном ;
  :start "1893" ;
- :w "160"^^xsd:integer ;
+ :w :160 ;
  rdf:type :ProductionUnit .
 
 :Московский_жировой_комбинат
  :place :Москва ;
  :start "1935" ;
- :w "350"^^xsd:integer ;
+ :w :350 ;
  rdf:type :ProductionUnit .
 
 :Московский_комбинат_хлебопродуктов
  :place :Москва ;
+ :prod :Изделие_хлебобулочное ;
  :start "1936" ;
- :w "2007"^^xsd:integer ;
+ :w :2007 ;
  rdf:type :ProductionUnit .
 
 :Московский_маргариновый_завод
  :end "2020" ;
  :place :Москва ;
  :start "1930" ;
- :w "350"^^xsd:integer ;
+ :w :350 ;
  rdf:type :ProductionUnit .
 
 :Моющее_средство_на_жировой_основе
  :industry :Производство_мыла_и_моющих_средств .
 
+:Мука
+ rdf:type :Product ;
+ :case-of :Пищевой_продукт .
+
+:Мука_пшеничная
+ rdf:type :Product ;
+ :case-of :Мука .
+
+:Мука_ржаная
+ rdf:type :Product ;
+ :case-of :Мука .
+
 :Мурманский_рыбный_комбинат
  :place :Мурманск ;
  :start "1927" ;
- :w "39"^^xsd:integer ;
+ :w :39 ;
  rdf:type :ProductionUnit .
 
 :Мыло
@@ -2528,14 +2574,14 @@ tabtree:Id
  :end "2019" ;
  :place :Белый_Яр_Курганская ;
  :start "1993" ;
- :w "130"^^xsd:integer ;
+ :w :130 ;
  rdf:type :ProductionUnit .
 
 :Мясокомбинат_Самсон
  :end "2000" ;
  rdf:type :ProductionUnit ;
  :place :Санкт-Петербург ;
- :rev "106M$" ;
+ :rev :106M ;
  :start "1933" .
 
 :Мята
@@ -2565,17 +2611,25 @@ tabtree:Id
 
 :Находкинский_мясокомбинат
  :place :Находка ;
- :rev "770M" ;
- :pinc "15M" ;
+ :rev :770M ;
+ :pinc :15M ;
  :start "1949" ;
- :w "350"^^xsd:integer ;
+ :w :350 ;
  rdf:type :ProductionUnit .
+
+:Нерка
+ rdf:type :Product ;
+ :case-of :Рыба .
+
+:Нерка_стейк
+ rdf:type :Product ;
+ :case-of :Нерка .
 
 :Нижегородский_масложировой_комбинат
  rdf:type :ProductionUnit ;
  :place :Нижний_Новгород ;
  :abbr :НМЖК ;
- :rev "30.3G" ;
+ :rev :30.3G ;
  :start "1898" .
 
 :Никольский_рыборазводный_завод_им_Врасского
@@ -2617,15 +2671,15 @@ tabtree:Id
  :place :Новочеркасск ;
  :prod :Продукт_молочный ;
  :start "1965" ;
- :w "350"^^xsd:integer ;
+ :w :350 ;
  rdf:type :ProductionUnit .
 
 :Новочеркасский_мясокомбинат
  :place :Новочеркасск ;
- :ocap "21.871M" ;
- :pinc "829K" ;
+ :ocap :21.871M ;
+ :pinc :829K ;
  :start "1915" ;
- :w "250"^^xsd:integer ;
+ :w :250 ;
  rdf:type :ProductionUnit .
 
 :НПО_Альтернатива
@@ -2637,9 +2691,18 @@ tabtree:Id
  rdf:type :Product ;
  :case-of :Пищевой_продукт .
 
+:Окунь
+ rdf:type :Product ;
+ :case-of :Рыба .
+
+:Окунь_филе
+ rdf:type :Product ;
+ :case-of :Окунь .
+
 :Олымский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Олымский .
+ :place :Олымский ;
+ :prod :Сахар .
 
 :Ольховатский_сахарный_комбинат
  rdf:type :ProductionUnit ;
@@ -2649,7 +2712,7 @@ tabtree:Id
  :place :Омск ;
  :prod :Печенье, :Вафли, :Мармелад, :Соломка, :Зефир, :Дольки_мармеладные ;
  :start "1967" ;
- :w "1114"^^xsd:integer ;
+ :w :1114 ;
  rdf:type :ProductionUnit .
 
 :Омский_завод_плавленых_сыров
@@ -2679,34 +2742,36 @@ tabtree:Id
 :Останкинский_завод_бараночных_изделий
  :place :Москва ;
  :start "1966" ;
- :w "600"^^xsd:integer ;
+ :w :600 ;
  rdf:type :ProductionUnit .
 
 :Останкинский_молочный_комбинат
  :end "2020" ;
  :place :Москва ;
  :prod :Молоко ;
- :rev "7.1G" ;
- :pinc "218M" ;
+ :rev :7.1G ;
+ :pinc :218M ;
  :start "1955" ;
- :w "844"^^xsd:integer ;
+ :w :844 ;
  rdf:type :ProductionUnit .
 
 :Останкинский_мясоперерабатывающий_комбинат
  :place :Москва ;
  :start "1954" ;
- :w "5605"^^xsd:integer ;
+ :w :5605 ;
  rdf:type :ProductionUnit .
 
 :Останкинский_пивоваренный_завод
  :end "2008" ;
  rdf:type :ProductionUnit ;
  :place :Москва ;
+ :prod :Пиво_Останкинское ;
  :start "1949" .
 
 :Павловский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Павловская_Краснодарский .
+ :place :Павловская_Краснодарский ;
+ :prod :Сахар .
 
 :Парфюмерия
  :industry :Парфюмерно-косметическая_промышленность .
@@ -2735,11 +2800,13 @@ tabtree:Id
 :Первый_Донской_сахарный_завод
  rdf:type :ProductionUnit ;
  :place :Целина ;
+ :prod :Сахар ;
  :start "2020" .
 
 :Перелишинский_сахарный_комбинат
  rdf:type :ProductionUnit ;
- :place :Перелишинский .
+ :place :Перелишинский ;
+ :prod :Сахар .
 
 :Перепелиная_ферма_Приморская
  rdf:type :ProductionUnit ;
@@ -2763,6 +2830,7 @@ tabtree:Id
 :Петрозаводский_ликеро-водочный_завод_Петровский
  rdf:type :ProductionUnit ;
  :place :Петрозаводск ;
+ :prod :Напиток_алкгогольный ;
  :start "1897" .
 
 :Печенье
@@ -2788,6 +2856,7 @@ tabtree:Id
 :Пивзавод_Ярпиво
  rdf:type :ProductionUnit ;
  :place :Ярославль ;
+ :prod :Пиво_Ярпиво ;
  :start "1974" .
 
 :Пиво
@@ -2795,14 +2864,26 @@ tabtree:Id
  :case-of :Пивоваренная_промышленность, :Напиток_алкогольный ;
  :industry :Пивоваренная_промышленность, :Напиток_алкогольный .
 
+:Пиво_Балтика
+ rdf:type :Product ;
+ :case-of :Пиво .
+
+:Пиво_Останкинское
+ rdf:type :Product ;
+ :case-of :Пиво .
+
 :Пиво_Сармат
+ rdf:type :Product ;
+ :case-of :Пиво .
+
+:Пиво_Ярпиво
  rdf:type :Product ;
  :case-of :Пиво .
 
 :Пивобезалкогольный_комбинат_Крым
  rdf:type :ProductionUnit ;
  :place :Симферополь ;
- :rev "2.34G" ;
+ :rev :2.34G ;
  :start "1982" .
 
 :Пивоваренная_промышленность
@@ -2812,6 +2893,7 @@ tabtree:Id
 :Пивоваренный_завод_Балтика
  rdf:type :ProductionUnit ;
  :place :Санкт-Петербург ;
+ :prod :Пиво_Балтика ;
  :start "1990" .
 
 :Пивоваренный_завод_Сармат
@@ -2823,8 +2905,8 @@ tabtree:Id
 
 :Пионер
  :place :Люберцы ;
- :prod :Вода_минеральная_Теберда, :Лимонад_Тархун ;
- :w "25"^^xsd:integer ;
+ :prod :Вода_минеральная_Теберда, :Лимонад_Тархун, :Напиток_безалкогольный, :Вода_питьевая ;
+ :w :25 ;
  rdf:type :ProductionUnit .
 
 :Пирог
@@ -2849,7 +2931,7 @@ tabtree:Id
 :Пищевой_комбинат_Ладога
  :place :Санкт-Петербург ;
  :start "1952" ;
- :w "1000"^^xsd:integer ;
+ :w :1К ;
  rdf:type :ProductionUnit .
 
 :Пищевой_продукт
@@ -2862,9 +2944,14 @@ tabtree:Id
 
 :Погарская_сигаретно-сигарная_фабрика
  :place :Погар ;
+ :prod :Изделие_табачное ;
  :start "1915" ;
- :w "400"^^xsd:integer ;
+ :w :400 ;
  rdf:type :ProductionUnit .
+
+:Полуфабрикат_рыбный
+ rdf:type :Product ;
+ :case-of :Рыбный_продукт .
 
 :Предприятие_Сыр-Молоко
  rdf:type :ProductionUnit ;
@@ -2874,24 +2961,31 @@ tabtree:Id
 :Приазовская_Бавария
  :place :Ейск ;
  :brand :Ейское ;
- :rev "1.625M$" ;
+ :rev :1.625M ;
  :start "1861" ;
- :w "200"^^xsd:integer ;
+ :w :200 ;
  rdf:type :ProductionUnit .
 
 :Приморский_кондитер
  :place :Владивосток ;
  :start "1906" ;
- :w "519"^^xsd:integer ;
+ :w :519 ;
  rdf:type :ProductionUnit .
 
 :Приморский_сахар
  rdf:type :ProductionUnit ;
- :place :Уссурийск .
+ :place :Уссурийск ;
+ :prod :Сахар .
 
 :Приправа
  rdf:type :Product ;
  :case-of :Пищевой_продукт .
+
+:Про_Вкус
+ rdf:type :ProductionUnit ;
+ :place :Одинцово ;
+ :prod :Сметанник, :Продукт_кулинарный ;
+ :start "2011" .
 
 :Продукт_быстрого_приготовления
  rdf:type :Product ;
@@ -2958,16 +3052,25 @@ tabtree:Id
  :prod :Мясо_куриное ;
  :start "1967" .
 
+:Путассу
+ rdf:type :Product ;
+ :case-of :Рыба .
+
+:Путассу_тушка
+ rdf:type :Product ;
+ :case-of :Путассу .
+
 :Пучежский_сыродельный_завод
  :place :Пучеж ;
- :rev "76.6M" ;
+ :rev :76.6M ;
  :start "1974" ;
- :w "36"^^xsd:integer ;
+ :w :36 ;
  rdf:type :ProductionUnit .
 
 :Раевсахар
  rdf:type :ProductionUnit ;
- :place :Раевский_Башкортостан .
+ :place :Раевский_Башкортостан ;
+ :prod :Сахар .
 
 :Развеска_и_прессовка_чая
  :okonh :18172 ;
@@ -2977,6 +3080,7 @@ tabtree:Id
  :end "200x" ;
  rdf:type :ProductionUnit ;
  :place :Рамонь ;
+ :prod :Сахар ;
  :start "1840" .
 
 :Рахат-Лукум
@@ -2986,11 +3090,13 @@ tabtree:Id
 :Ровеньковский_пивоваренный_завод
  rdf:type :ProductionUnit ;
  :place :Ровеньки ;
+ :prod :Напиток_алкогольный ;
  :start "1906" .
 
 :Ройский_спиртоводочный_завод
  rdf:type :ProductionUnit ;
  :place :Лазарево_Кировская ;
+ :prod :Напиток_алкогольный ;
  :start "1833" .
 
 :Ромашка
@@ -2999,7 +3105,8 @@ tabtree:Id
 
 :Ромодановский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Ромоданово .
+ :place :Ромоданово ;
+ :prod :Сахар .
 
 :Росшоколад
  rdf:type :ProductionUnit ;
@@ -3024,7 +3131,7 @@ tabtree:Id
 
 :Рыбный_продукт
  rdf:type :Product ;
- :case-of :Пищевой_продукт .
+ :case-of :Морепродукт .
 
 :Ряженка
  rdf:type :Product ;
@@ -3038,7 +3145,8 @@ tabtree:Id
 
 :Садовский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Садовое_Воронежская .
+ :place :Садовое_Воронежская ;
+ :prod :Сахар .
 
 :Сало
  rdf:type :Product ;
@@ -3046,21 +3154,23 @@ tabtree:Id
 
 :Санкт-Петербургский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Санкт-Петербург .
+ :place :Санкт-Петербург ;
+ :prod :Сахар .
 
 :Саратовская_табачная_фабрика
  :end "2019" ;
  :place :Саратов ;
+ :prod :Изделие_табачное ;
  :start "1828" ;
- :w "750"^^xsd:integer ;
+ :w :750 ;
  rdf:type :ProductionUnit .
 
 :Саратовский_жировой_комбинат
  :place :Саратов ;
- :rev "9.8G" ;
- :pinc "43M" ;
+ :rev :9.8G ;
+ :pinc :43M ;
  :start "1953" ;
- :w "1000"^^xsd:integer ;
+ :w :1K ;
  rdf:type :ProductionUnit .
 
 :Сахар
@@ -3083,52 +3193,61 @@ tabtree:Id
 
 :Сахарный_завод_Жердевский
  rdf:type :ProductionUnit ;
- :place :Дмитриевка_Тамбовская .
+ :place :Дмитриевка_Тамбовская ;
+ :prod :Сахар .
 
 :Сахарный_завод_Ленинградский
  rdf:type :ProductionUnit ;
- :place :Ленинградская_Краснодарский .
+ :place :Ленинградская_Краснодарский ;
+ :prod :Сахар .
 
 :Сахарный_завод_Никифоровский
  rdf:type :ProductionUnit ;
- :place :Знаменка_Тамбовская .
+ :place :Знаменка_Тамбовская ;
+ :prod :Сахар .
 
 :Сахарный_завод_Свобода
  rdf:type :ProductionUnit ;
- :place :Усть-Лабинск .
+ :place :Усть-Лабинск ;
+ :prod :Сахар .
 
 :Сахарный_завод_Чеченской_республики
  rdf:type :ProductionUnit ;
- :place :Аргун .
+ :place :Аргун ;
+ :prod :Сахар .
 
 :Сахарный_комбинат_Большевик
  rdf:type :ProductionUnit ;
- :place :Головчино_Белгородская .
+ :place :Головчино_Белгородская ;
+ :prod :Сахар .
 
 :Сахарный_комбинат_Курганинский
  rdf:type :ProductionUnit ;
- :place :Курганинск .
+ :place :Курганинск ;
+ :prod :Сахар .
 
 :Сахарный_комбинат_Льговский
  rdf:type :ProductionUnit ;
- :place :Льгов .
+ :place :Льгов ;
+ :prod :Сахар .
 
 :Сахарторг
  rdf:type :ProductionUnit ;
- :place :Краснодар .
+ :place :Краснодар ;
+ :prod :Сахар .
 
 :Светлоярский_завод_белково-витаминных_концентратов
  :end "1994" ;
  :place :Светлый_Яр ;
  :start "1971" ;
- :w "2572"^^xsd:integer ;
+ :w :2572 ;
  rdf:type :ProductionUnit .
 
 :Свинокомплекс_Уральский
  :place :Богданович ;
  :prod :Мясо_свиное ;
  :start "2007" ;
- :w "360"^^xsd:integer ;
+ :w :360 ;
  rdf:type :ProductionUnit .
 
 :Сдоба
@@ -3138,15 +3257,34 @@ tabtree:Id
 :Севастопольский_винзавод
  rdf:type :ProductionUnit ;
  :place :Севастополь ;
+ :prod :Вино ;
  :start "1938" .
+
+:Семена
+ rdf:type :Product ;
+ :case-of :Пищевой_продукт .
+
+:Семена_подсолнечника
+ rdf:type :Product ;
+ :case-of :Семена .
+
+:Семена_подсолнечника_жареные
+ rdf:type :Product ;
+ :case-of :Семена_подсолнечника .
+
+:Семена_тыквенные
+ rdf:type :Product ;
+ :case-of :Семена .
 
 :Сергачский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Сергач .
+ :place :Сергач ;
+ :prod :Сахар .
 
 :Сестрорецкий_хлебозавод
  rdf:type :ProductionUnit ;
  :place :Сестрорецк ;
+ :prod :Изделие_хлебобулочное ;
  :start "1962" .
 
 :Сибирский_гурман
@@ -3155,19 +3293,34 @@ tabtree:Id
  :start "1995" .
 
 :Сигареты
- :industry :Производство_табачно-махорочных_изделий .
+ rdf:type :Product ;
+ :case-of :Производство_табачно-махорочных_изделий, :Изделие_табачное ;
+ :industry :Производство_табачно-махорочных_изделий, :Изделие_табачное .
 
 :Сигары
- :industry :Производство_табачно-махорочных_изделий .
+ rdf:type :Product ;
+ :case-of :Производство_табачно-махорочных_изделий, :Изделие_табачное ;
+ :industry :Производство_табачно-махорочных_изделий, :Изделие_табачное .
+
+:Сила_воина_Евразия
+ :place :Вязьма ;
+ :url <powerofwarrior.com> ;
+ :prod :Напиток_безалкогольный ;
+ :start "2018" ;
+ :w :50 ;
+ rdf:type :ProductionUnit .
 
 :Скидельский_сахарный_комбинат
  rdf:type :ProductionUnit ;
- :place :Скидель .
+ :place :Скидель ;
+ :prod :Сахар .
 
 :Сладкодаров
  rdf:type :ProductionUnit ;
  :place :Самара ;
- :prod :Печенье_овсяное_Царское_сокровище, :Зенфир .
+ :url <sladkodar.ru> ;
+ :prod :Печенье_овсяное_Царское_сокровище, :Зефир, :Изделие_кондитерское ;
+ :start "2001" .
 
 :Слива
  rdf:type :Product ;
@@ -3177,9 +3330,16 @@ tabtree:Id
  rdf:type :Product ;
  :case-of :Молоко .
 
+:Сливочная_страна
+ rdf:type :ProductionUnit ;
+ :place :Мытищи ;
+ :url <slstrana.ru> ;
+ :prod :Масло_сливочное, :Спред .
+
 :Слуцкий_сахарорафинадный_комбинат
  rdf:type :ProductionUnit ;
- :place :Слуцк .
+ :place :Слуцк ;
+ :prod :Сахар-рафинад .
 
 :Сметана
  rdf:type :Product ;
@@ -3231,25 +3391,26 @@ tabtree:Id
 
 :Сотницынский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Сотницыно_Рязанская .
+ :place :Сотницыно_Рязанская ;
+ :prod :Сахар .
 
 :Соус
  rdf:type :Product ;
  :case-of :Пищевой_продукт .
 
 :Сочинский_мясокомбинат
- :rev "4.6G" ;
- :pinc "173M" ;
+ :rev :4.6G ;
+ :pinc :173M ;
  :start "1937" ;
- :w "1500"^^xsd:integer ;
+ :w :1500 ;
  rdf:type :ProductionUnit ;
  :place :Сочи ;
- :oinc "2G" .
+ :oinc :2G .
 
 :Сочинский_хлебокомбинат
  :place :Сочи ;
  :start "1937" ;
- :w "791"^^xsd:integer ;
+ :w :791 ;
  rdf:type :ProductionUnit .
 
 :СпециальЮг
@@ -3269,7 +3430,8 @@ tabtree:Id
 
 :Ставропольский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Изобильный .
+ :place :Изобильный ;
+ :prod :Сахар .
 
 :Старобельский_завод_заменителя_цельного_молока
  rdf:type :ProductionUnit ;
@@ -3338,7 +3500,7 @@ tabtree:Id
  :place :Таганрог ;
  :prod :Вафли, :Зефир, :Пастила, :Мармелад ;
  :start "1912" ;
- :w "43"^^xsd:integer ;
+ :w :43 ;
  rdf:type :ProductionUnit .
 
 :Таганрогский_рыбоперерабатывающий_завод
@@ -3346,7 +3508,7 @@ tabtree:Id
  :place :Таганрог ;
  :prod :Паштет_Волна ;
  :start "1930" ;
- :w "290"^^xsd:integer ;
+ :w :290 ;
  rdf:type :ProductionUnit .
 
 :Тан
@@ -3397,7 +3559,7 @@ tabtree:Id
  :place :Тула ;
  :prod :Молоко ;
  :start "1943" ;
- :w "516"^^xsd:integer ;
+ :w :516 ;
  rdf:type :ProductionUnit .
 
 :Тульский_пивзавод
@@ -3408,7 +3570,7 @@ tabtree:Id
 :Тыретский_солерудник
  :place :Тыреть ;
  :prod :Соль_пищевая ;
- :w "521"^^xsd:integer ;
+ :w :521 ;
  rdf:type :ProductionUnit .
 
 :Уваровская_нива
@@ -3453,7 +3615,7 @@ tabtree:Id
  :place :Ступино ;
  :prod :Шоколадный_батончик_Mars, :Шоколадный_батончик_Snickers, :Шоколадный_батончик_Bounty ;
  :start "1995" ;
- :w "952"^^xsd:integer ;
+ :w :952 ;
  rdf:type :ProductionUnit .
 
 :Фабрика_вкуса_Bosche
@@ -3472,7 +3634,7 @@ tabtree:Id
  :tsid :Торговый_дом_Леновых ;
  :sid :Кондитерская_фабрика_Рот_Фронт ;
  :start "1826" ;
- :w "3493"^^xsd:integer ;
+ :w :3493 ;
  rdf:type :ProductionUnit .
 
 :Фабрика_Экстра_М
@@ -3484,11 +3646,20 @@ tabtree:Id
 :Фамильные_сладости
  rdf:type :ProductionUnit ;
  :place :Балашиха ;
- :prod :Кекс, :Конфеты, :Печенье, :Пирог, :Пирожные, :Рулет .
+ :prod :Кекс, :Конфеты, :Печенье, :Пирог, :Пирожные, :Рулет, :Изделие_кондитерское ;
+ :start "2011" .
 
 :Ферментация_табака
  :okonh :18181 ;
  :industry :Табачно-махорочная_промышленность .
+
+:Форель
+ rdf:type :Product ;
+ :case-of :Рыба .
+
+:Форель_стейк
+ rdf:type :Product ;
+ :case-of :Форель .
 
 :Фрукт_свежий
  rdf:type :Product ;
@@ -3497,7 +3668,7 @@ tabtree:Id
 :Хабаровский_масложиркомбинат
  :place :Хабаровск ;
  :start "1955" ;
- :w "32"^^xsd:integer ;
+ :w :32 ;
  rdf:type :ProductionUnit .
 
 :Халва
@@ -3509,6 +3680,14 @@ tabtree:Id
  rdf:type :ProductionUnit ;
  :place :Москва ;
  :start "1863" .
+
+:Хек
+ rdf:type :Product ;
+ :case-of :Рыба .
+
+:Хек_тушка
+ rdf:type :Product ;
+ :case-of :Хек .
 
 :Хладокомбинат_N3
  rdf:type :ProductionUnit ;
@@ -3532,54 +3711,62 @@ tabtree:Id
  :end "2020" ;
  rdf:type :ProductionUnit ;
  :place :Воронеж ;
+ :prod :Изделие_хлебобулочное ;
  :start "1929" .
 
 :Хлебозавод_N9
  :end "2015" ;
  :place :Москва ;
+ :prod :Изделие_хлебобулочное ;
  :start "1934" ;
- :w "147"^^xsd:integer ;
+ :w :147 ;
  rdf:type :ProductionUnit .
 
 :Хлебозавод_им_Зотова
  :end "2007" ;
  rdf:type :ProductionUnit ;
  :place :Москва ;
+ :prod :Изделие_хлебобулочное ;
  :sid :Хлебозавод_N5 ;
  :start "1931" .
 
 :Хлебозавод_Москворечье
  :place :Москва ;
+ :prod :Изделие_хлебобулочное ;
  :start "1932" ;
- :w "600"^^xsd:integer ;
+ :w :600 ;
  rdf:type :ProductionUnit .
 
 :Хлебозавод_Московского_района
  rdf:type :ProductionUnit ;
  :place :Санкт-Петербург ;
+ :prod :Изделие_хлебобулочное ;
  :sid :Хлебозавод_N12 ;
  :start "1934" .
 
 :Хлебозавод_Русич
  rdf:type :ProductionUnit ;
  :place :Новосибирск ;
+ :prod :Изделие_хлебобулочное ;
  :sid :Хлебокомбинат_N5 ;
  :start "1954" .
 
 :Хлебозавод_Черкизово
  :place :Москва ;
- :rev "737M" ;
- :pinc "26.4M" ;
+ :prod :Изделие_хлебобулочное ;
+ :rev :737M ;
+ :pinc :26.4M ;
  :start "1932" ;
- :w "264"^^xsd:integer ;
+ :w :264 ;
  rdf:type :ProductionUnit .
 
 :Хлебообъединение_Восход
  :place :Новосибирск ;
- :rev "1.7G" ;
- :pinc "13.3M" ;
+ :prod :Изделие_хлебобулочное ;
+ :rev :1.7G ;
+ :pinc :13.3M ;
  :start "1929" ;
- :w "556"^^xsd:integer ;
+ :w :556 ;
  rdf:type :ProductionUnit .
 
 :Хлебопекарная_промышленность
@@ -3588,7 +3775,8 @@ tabtree:Id
 
 :Хохольский_сахарный_комбинат
  rdf:type :ProductionUnit ;
- :place :Хохольский .
+ :place :Хохольский ;
+ :prod :Сахар .
 
 :Цикорий
  rdf:type :Product ;
@@ -3600,8 +3788,9 @@ tabtree:Id
 
 :Цимлянские_вина
  :place :Цимлянск ;
+ :prod :Вино ;
  :start "1880" ;
- :w "285"^^xsd:integer ;
+ :w :285 ;
  rdf:type :ProductionUnit .
 
 :Чабрец
@@ -3612,7 +3801,7 @@ tabtree:Id
  :place :Фрязино ;
  :prod :Чай_черный ;
  :start "1998" ;
- :w "900"^^xsd:integer ;
+ :w :900 ;
  rdf:type :ProductionUnit .
 
 :Чай
@@ -3624,6 +3813,10 @@ tabtree:Id
  rdf:type :Product ;
  :case-of :Чай .
 
+:Чай_со_слоном
+ rdf:type :Product ;
+ :case-of :Чай_черный .
+
 :Чай_улун
  rdf:type :Product ;
  :case-of :Чай .
@@ -3634,7 +3827,8 @@ tabtree:Id
 
 :Чайковский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Чайковский .
+ :place :Чайковский ;
+ :prod :Сахар .
 
 :Чайная_промышленность
  :okonh :18170 ;
@@ -3644,12 +3838,13 @@ tabtree:Id
  :place :Челябинск ;
  :sid :Челябинская_кондитерская_фабрика ;
  :start "1961" ;
- :w "650"^^xsd:integer ;
+ :w :650 ;
  rdf:type :ProductionUnit .
 
 :Черемновский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Черемное_Алтайский .
+ :place :Черемное_Алтайский ;
+ :prod :Сахар .
 
 :Черешня
  rdf:type :Product ;
@@ -3657,12 +3852,14 @@ tabtree:Id
 
 :Чишминский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Чишмы .
+ :place :Чишмы ;
+ :prod :Сахар .
 
 :Шадринский_пивзавод
  :place :Шадринск ;
+ :prod :Напиток_алкгогольный ;
  :start "1961" ;
- :w "65"^^xsd:integer ;
+ :w :65 ;
  rdf:type :ProductionUnit .
 
 :Шиповник
@@ -3682,7 +3879,7 @@ tabtree:Id
  :place :Самара ;
  :sid :Куйбышевская_шоколадная_фабрика_Россия ;
  :start "1969" ;
- :w "2000"^^xsd:integer ;
+ :w :2К ;
  rdf:type :ProductionUnit .
 
 :Шоколадный_батончик_Bounty
@@ -3703,11 +3900,13 @@ tabtree:Id
 
 :Эркен-Шахарский_сахарный_завод
  rdf:type :ProductionUnit ;
- :place :Эркен-Шахар .
+ :place :Эркен-Шахар ;
+ :prod :Сахар .
 
 :Эртильский_сахар
  rdf:type :ProductionUnit ;
- :place :Эртиль .
+ :place :Эртиль ;
+ :prod :Сахар .
 
 :Ювикс-Фарм
  rdf:type :ProductionUnit ;
@@ -3742,6 +3941,6 @@ tabtree:Id
 :Ярославский_бройлер
  :place :Октябрьский_Ярославская ;
  :start "1982" ;
- :w "2000"^^xsd:integer ;
+ :w :2К ;
  rdf:type :ProductionUnit .
 

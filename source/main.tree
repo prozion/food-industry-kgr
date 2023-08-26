@@ -1,0 +1,42 @@
+food_industry a:owl/Ontology ns:https://purl.org/prozion/food_industry# rdfs/label:"Knowledge graph on Russian food industry"
+	namespaces
+		rdf ns:http://www.w3.org/1999/02/22-rdf-syntax-ns#
+		rdfs ns:http://www.w3.org/2000/01/rdf-schema#
+		owl ns:http://www.w3.org/2002/07/owl#
+		dc ns:http://purl.org/dc/elements/1.1/
+		skos ns:http://www.w3.org/2004/02/skos/core#
+		tabtree ns:https://purl.org/prozion/tabtree/core#
+		ta ns:https://purl.org/prozion/tabtree/abstract#
+		tm ns:https://purl.org/prozion/tabtree/metrics#
+		time ns:https://purl.org/prozion/tabtree/time#
+		loc ns:https://purl.org/prozion/tabtree/location#
+		pers ns:https://purl.org/prozion/tabtree/person#
+		org ns:https://purl.org/prozion/tabtree/organization#
+		src ns:https://purl.org/prozion/tabtree/source#
+		media ns:https://purl.org/prozion/tabtree/media#
+		xsd ns:http://www.w3.org/2001/XMLSchema#
+	[ontologies/brand.tree]
+	[ontologies/company.tree]
+	[ontologies/factory.tree]
+	[ontologies/industry.tree]
+	[ontologies/person.tree]
+	[ontologies/product.tree]
+	[ontologies/source.tree]
+	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		abbr eq-property:owl/equivalentProperty	
+		case-of a:owl/TransitiveProperty,owl/ReflexiveProperty owl/inverseOf:narrower d:"substitiution for skos/broader"
+		end eq-property:time/end range:time/Year
+		former-id eq-property:ta/former-id
+		start range:time/Year
+		url eq-property:media/url range:media/Url
+		year eq-property:time/year range:time/Year
+	individuals
+		; [facts/factories_cosmetics.tree]
+		; [facts/factories_equipment.tree]
+		; [facts/factories_tare.tree]
+		[facts/factories.tree]
+		[facts/industries.tree]
+		; [facts/places_russia.tree]
+		; [facts/places_world.tree]
+		[facts/products.tree]
+		; [facts/sources.tree]

@@ -1,4 +1,4 @@
 factories_cosmetics +a:ProductionUnit
 	Завод_Сплат_Глобал place:Окуловка start:2010
 	Косметическая_фабрика_Свобода place:Москва start:1843 pinc:98.7M^year:2010 w:800
-	Smart_wash place:Красноярск start:2022 prod:Салфетки_влажные
+	Smart_wash place:Красноярск start:2022 prod:Салфетка_влажная

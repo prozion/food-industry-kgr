@@ -1,0 +1,8 @@
+place
+	classes +a:owl/Class +hi-inv-rel:subclass-of
+		Population subclass-of:tabtree/IntegerPositive
+	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		lat eq-property:loc/lat range:tabtree/Float
+		lon eq-property:loc/lon range:tabtree/Float
+		place domain:ProductionUnit range:loc/City
+		pop domain:loc/City range:Population d:"Number of town dwellers (population)"

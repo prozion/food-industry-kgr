@@ -1,0 +1,6 @@
+source
+	classes +a:owl/Class +hi-inv-rel:subclass-of
+	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		s eq-property:src/source
+			s-wiki
+		s-url subproperty-of:s,media/url range:tabtree/Url

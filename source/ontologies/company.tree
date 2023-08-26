@@ -1,0 +1,84 @@
+company
+	classes +a:owl/Class +hi-inv-rel:subclass-of
+		FinancialUnit d:"Applicable both to Companies and Factories"
+			Company
+		PropertyUnit
+			Company
+			Brand
+			Factory
+		Company
+			ParentCompany
+			Subsidiary
+		Company subclass-of:rdf/Property domain:`Company,Person` range:Share
+		Deal
+		FinancialUnitMetrics subclass-of:rdfs/Literal
+			FinancialUnitMonetaryMetrics subclass-of:MoneyAmount,tm/Money
+				Assets
+				Capitalization
+				Dept
+				Income
+				Revenue
+		Mean
+			Share subclass-of:rdfs/Literal d:"Company share, measured in percentages"
+		Organization subclass-of:org/Organization
+			BusinessGroup
+				Cartel
+				Consortium
+			BusinessUnit eq:org/BusinessUnit
+				BusinessGroup
+				BusinessGroupOfPeople subclass-of:GroupOfPeople
+				Corporation subclass-of:`org/GroupOfPeople,Company`
+					StateCorporation subclass-of:StateOrganization
+				CorporateGroup subclass-of:Group
+					Concern
+				Company eq:org/Company
+					Holding
+						VIHolding deabbr:"Vertically Integrated Holding"
+				Conglomerate part-of:Corporation subclass-of:GroupOfCompanies
+				StoreUnit
+					GrainElevator
+			ResearchUnit
+				Lab
+				ProvingGround
+				ResearchInstitute
+			TradeUnit
+				ChainStore
+				Store
+					OnlineStore
+				Market
+				ShoppingMall
+			StateOrganization
+		ta/Group
+			GroupOfCompanies
+	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		assets domain:FinancialUnit range:Assets
+		cap domain:FinancialUnit range:Capitalization
+			acap d:"Authorised capital" ; "Уставной капитал"@ru
+			ocap d:"Own capital (equity)"
+			mcap d:"Market capitalization"
+		company eq-property:org/company
+		former
+			former-owner domain:Person range:Company
+				former-co-owner
+			former-share domain:Company range:Share
+		from range:Deal domain:Businessman
+		hq eq-property:org/hq
+		inc domain:FinancialUnit range:Income
+			oinc d:"Operational income - earnings before interest and taxes"
+			pinc d:"Pure income (net income)"
+		market-share domain:`ProductionUnit,Company` range:Share
+		n subproperty-of:ta/metrics domain:Company
+			branches-n domain:ChainStore
+		owned-by domain:Property range:Organization
+		parent domain:Organization range:Organization
+		part-of eq-property:tabtree/part-of
+		rev domain:Organization range:Revenue
+		share domain:`Person,Company` range:PropertyUnit
+			owner
+				co-owner
+			prime-share
+			minor-share
+		sold domain:Deal range:Mean
+			share-sold range:Share
+		subsidiary-of domain:Company range:Subsidiary
+		to range:Deal domain:Businessman

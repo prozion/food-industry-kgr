@@ -1,0 +1,7 @@
+brand
+	classes +a:owl/Class +hi-inv-rel:subclass-of
+		Brand subclass-of:rdfs/Literal
+	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		brand range:Brand
+			owns-brand domain:Company
+			produces-brand domain:Factory
