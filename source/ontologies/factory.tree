@@ -9,6 +9,8 @@ factory
 			TsarTimeId
 			FormerId
 	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		email domain:Factory range:rdfs/Literal d:"Email of the factory/company, if there is no website"
+		ez domain:Factory range:Organization d:"Special economic zone, industrial park etc."
 		facilities-from domain:Company range:ProductionUnit
 			equipment-from domain:ProductionUnit 
 				prodcap domain:Factory range:Factory d:"uses production lines (capacities) of a targeted factory"
@@ -19,4 +21,5 @@ factory
 		prod domain:ProductionUnit range:Product	
 		stop domain:ProductionUnit range:time/Year
 		w domain:ProductionUnit range:tabtree/PositiveInteger
+			w-future d:"Planned number of workers"
 	

@@ -23,20 +23,21 @@ food_industry a:owl/Ontology ns:https://purl.org/prozion/food_industry# rdfs/lab
 	[ontologies/product.tree]
 	[ontologies/source.tree]
 	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		alt d:"alternative name/id"
 		abbr eq-property:owl/equivalentProperty	
-		case-of a:owl/TransitiveProperty,owl/ReflexiveProperty owl/inverseOf:narrower d:"substitiution for skos/broader"
+		case-of a:owl/TransitiveProperty,owl/ReflexiveProperty owl/inverseOf:narrower d:"substitution for skos/broader"
 		end eq-property:time/end range:time/Year
 		former-id eq-property:ta/former-id
 		start range:time/Year
 		url eq-property:media/url range:media/Url
 		year eq-property:time/year range:time/Year
 	individuals
+		[taxonomies/industries.tree]
+		[taxonomies/products.tree]
+		[facts/factories.tree]
 		; [facts/factories_cosmetics.tree]
 		; [facts/factories_equipment.tree]
 		; [facts/factories_tare.tree]
-		[facts/factories.tree]
-		[facts/industries.tree]
 		; [facts/places_russia.tree]
 		; [facts/places_world.tree]
-		[facts/products.tree]
 		; [facts/sources.tree]

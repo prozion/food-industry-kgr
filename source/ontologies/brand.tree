@@ -1,6 +1,6 @@
 brand
 	classes +a:owl/Class +hi-inv-rel:subclass-of
-		Brand subclass-of:rdfs/Literal
+		Brand subclass-of:rdfs/Literal skos/editorialNote:"Perhaps it is better to use term 'Trademark' instead?"
 	properties +a:rdf/Property +hi-inv-rel:subproperty-of
 		brand range:Brand
 			owns-brand domain:Company
