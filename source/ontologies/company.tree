@@ -4,11 +4,14 @@ company
 			Company
 		PropertyUnit
 			Company
-			Brand
+			Trademark
 			Factory
 		Company
 			ParentCompany
 			Subsidiary
+		Company
+			EquipmentCompany
+			Retailer
 		Company subclass-of:rdf/Property domain:`Company,Person` range:Share
 		Deal
 		FinancialUnitMetrics subclass-of:rdfs/Literal
@@ -70,7 +73,7 @@ company
 		n subproperty-of:ta/metrics domain:Company
 			branches-n domain:ChainStore
 		owned-by domain:Property range:Organization
-		parent domain:Organization range:Organization
+		parent domain:Organization range:Organization d:"Parent organization in a form of Holding, umbrella company or whatever"
 		part-of eq-property:tabtree/part-of
 		rev domain:Organization range:Revenue
 		share domain:`Person,Company` range:PropertyUnit

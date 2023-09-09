@@ -9,8 +9,8 @@ factory
 			TsarTimeId
 			FormerId
 	properties +a:rdf/Property +hi-inv-rel:subproperty-of
-		email domain:Factory range:rdfs/Literal d:"Email of the factory/company, if there is no website"
 		ez domain:Factory range:Organization d:"Special economic zone, industrial park etc."
+		equipment domain:Factory range:EquipmentCompany
 		facilities-from domain:Company range:ProductionUnit
 			equipment-from domain:ProductionUnit 
 				prodcap domain:Factory range:Factory d:"uses production lines (capacities) of a targeted factory"
@@ -18,8 +18,12 @@ factory
 		sid range:SovietId d:"An idified name of the production unit in the Soviet time"
 		src domain:ProductionUnit range:Product d:"Raw materials for production unit"
 		tsid range:TsarTimeId d:"An idified name of the production unit before the Revolution by the time of Tsar Government, or by the time of bourgeois Provisional Government in 1917"
-		prod domain:ProductionUnit range:Product	
+		prod domain:ProductionUnit range:Product
+		raw domain:ProductionUnit range:RawProduct
+		retail domain:ProductionUnit range:Retailer
 		stop domain:ProductionUnit range:time/Year
+		url domain:ProductionUnit
+		tpd domain:rdf/Statement range:rdfs/Literal d:"Processing of a raw product in tonnes per day"
 		w domain:ProductionUnit range:tabtree/PositiveInteger
 			w-future d:"Planned number of workers"
 	

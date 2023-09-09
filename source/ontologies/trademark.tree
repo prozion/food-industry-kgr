@@ -1,0 +1,8 @@
+trademark
+	classes +a:owl/Class +hi-inv-rel:subclass-of
+		Trademark subclass-of:rdfs/Literal
+			Trademark
+	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		slogan domain:Trademark range:rdfs/Literal
+		tm domain:ProductioUnit range:Trademark
+		tm-owner domain:Trademark range:Organization

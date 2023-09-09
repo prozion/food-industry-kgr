@@ -1,4 +1,24 @@
 companies +a:Company
+	Аразренк start:1995 url:arazrenk.ru
+	АСБ url:asbgrupp.ru
+	Дымов url:v-dymov.ru
+	Золотой_терем hq:Ржев rev:2.2G pinc:442M tm:Баренцев
 	Индиго
-	Молоко place:Белевица w:156 url:moloko.group
+	КДВ start:1994 url:kdv-group.com w:17300 founder:Штенгелов_Денис
+	Киприно url:kiprino.ru
+	Коломенский url:kolomenskoe.ru tm-owner:Шоколадница,Мой_обожание,Семейный,Даниловский,Вкусно_и_просто,Мастер_Пирогов,Ржаной_край
+	Массандра url:massandra.su
+	Молоко hq:Белевица w:156 url:moloko.group
+	Объединенные_кондитеры url:uniconf.ru
+	Продимекс hq:Москва url:prodimex.ru
+	Руссоль url:russalt.ru
+	Савушкин_продукт url:savushkin.com media/vk:vk.com/savushkin_product parent:Bremor
+	Славянка url:slavyanka.com
+	Таврос url:tavros.ru
 	ТД_Фиш_Трейд url:tdfishtrade.ru
+	Новая_Компания name:"Shokolat'e" w:30 url:shokolat-e.ru
+	Янта url:yantacom.ru
+	Bremor start:1998 hq:Брест w:6K
+	Cafe_in_cafe start:2003 url:cafeincafe.ru
+	JTI url:jti.com
+	Mareven url:mareven.ru

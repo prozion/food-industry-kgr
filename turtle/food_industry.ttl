@@ -48,9 +48,9 @@
  rdfs:subPropertyOf :food_industry ;
  rdfs:domain (:Company :Factory) ;
  rdf:type rdf:Property ;
- rdfs:range :Brand .
+ rdfs:range :Trademark .
 
-:Brand
+:Trademark
  rdf:type owl:Class ;
  rdfs:subClassOf rdfs:Literal, :PropertyUnit .
 

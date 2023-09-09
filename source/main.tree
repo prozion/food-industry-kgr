@@ -14,6 +14,7 @@ food_industry a:owl/Ontology ns:https://purl.org/prozion/food_industry# rdfs/lab
 		org ns:https://purl.org/prozion/tabtree/organization#
 		src ns:https://purl.org/prozion/tabtree/source#
 		media ns:https://purl.org/prozion/tabtree/media#
+		c ns:https://purl.org/prozion/tabtree/contacts#
 		xsd ns:http://www.w3.org/2001/XMLSchema#
 	[ontologies/brand.tree]
 	[ontologies/company.tree]

@@ -4,12 +4,14 @@ person
 			Businessman
 		Post
 	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		bdate range:rdfs/Literal
 		board domain:Person range:Company
 			chairman
+		bplace range:loc/Place
 		cash domain:Person range:tm/Money
 		competitor a:owl/SymmetricProperty domain:Businessman range:Businessman
 		current-person domain:Post range:Person
-		founder domain:Person range:Company
+		founder domain:Person range:Organization
 		manager domain:Person range:Organization
 			director
 			president 

@@ -4,5 +4,5 @@ place
 	properties +a:rdf/Property +hi-inv-rel:subproperty-of
 		lat eq-property:loc/lat range:tabtree/Float
 		lon eq-property:loc/lon range:tabtree/Float
-		place domain:ProductionUnit range:loc/City
+		place domain:ProductionUnit range:loc/Place
 		pop domain:loc/City range:Population d:"Number of town dwellers (population)"
