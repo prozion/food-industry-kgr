@@ -1,24 +1,86 @@
 companies +a:Company
-	Аразренк start:1995 url:arazrenk.ru
+	Абрау-Дюрсо hq:Москва url:abrau.ru
+	Агрофирма_Весна hq:Нижний_Новгород url:vesna-agro.ru
+	Агрохолдинг_Белая_Дача hq:Котельники url:bdsalads.ru owns-tm:Белая_Дача
+	Аразренк start:1995 url:arazrenk.ru owns-tm:Savalan,Mahmood_Tea
 	АСБ url:asbgrupp.ru
+	Amber_Talvis url:talvis.ru
+	Балтийский_берег start:2000 hq:Санкт-Петербург url:baltbereg.com
+	Балтика url:corporate.baltika.ru owns-tm:Балтика,Балтика_0,Балтика_2,Балтика_3,Балтика_6,Балтика_7,Балтика_9,Kronenbourg,Somersby
+	БВК hq:Москва url:s-samobranka.ru owns-tm:Vitaland,Скатерть_Самобранка handles-prod:Соленье,Ананас,Персик,Манго,Клубника,Огурец_соленый,Помидор_соленый,Перец_болгарский_соленый,Огурец_маринованный,Помидор_маринованный,Патиссон_маринованый,Ассорти_овощное_маринованное,Лечо,Икра_овощная,Черемша_маринованная,Имбирь_маринованный,Перец_маринованный,Морковь_маринованная
+	Благо start:1993 hq:Санкт-Петербург url:gcblago.ru,blagoagro.ru media/vk:vk.com/club59756348 owns-tm:Freya,Almador,Благо_PRO,Дары_Кубани
+	ГАП_Ресурс url:gapresurs.ru owns-tm:Благояр,Наша_Птичка,An-Noor,Urussa,Дым_Дымыч,Россиянка,Чистое_золото,Станичное_солнце,Evolia,Удачная_цена
+	Гранд start:1994 hq:Москва url:grandcoffee.ru owns-tm:Grand
 	Дымов url:v-dymov.ru
+	Жемчужина_Поволжья start:1992 url:prospektoil.ru hq:Дзержинск
+	ЗАО_СК_Ленинградский url:kubmol.ru owns-tm:Кубанский_молочник
+	Зауральские_напитки url:znapitki.ru
 	Золотой_терем hq:Ржев rev:2.2G pinc:442M tm:Баренцев
-	Индиго
-	КДВ start:1994 url:kdv-group.com w:17300 founder:Штенгелов_Денис
+	Индиго url:indigoapk.ru
+	ИТА_Северная_Компания hq:Москва c/email:ex-audit@yandex.ru owns-tm:Gustafsen
+	КДВ alt:KDV,КДВ_групп start:1994 url:kdv-group.com w:17300 founder:Штенгелов_Денис
 	Киприно url:kiprino.ru
-	Коломенский url:kolomenskoe.ru tm-owner:Шоколадница,Мой_обожание,Семейный,Даниловский,Вкусно_и_просто,Мастер_Пирогов,Ржаной_край
+	Коломенский url:kolomenskoe.ru owns-tm:Шоколадница,Мой_обожание,Семейный,Даниловский,Вкусно_и_просто,Мастер_Пирогов,Ржаной_край
+	Конти-Рус hq:Курск start:1998 w:3К url:kontirus.ru
+	Кофейная_компания_Вокруг_Света hq:Москва url:ru.kkbc.ru owns-tm:АП_Селиванов,Кулинар,Белый_Мишка
+	Лаком hq:Санкт-Петербург start:2005
+	Май hq:Москва url:maisky.ru
 	Массандра url:massandra.su
+	Международная_сахарная_корпорация hq:Москва url:sugarinter.com
+	Милком hq:Ижевск url:milkom-komos.ru
 	Молоко hq:Белевица w:156 url:moloko.group
+	Моснефтегазстройкомплект hq:Москва url:k-apk.ru
+	Мултон_Партнерс owns-tm:Добрый
+	Настюша start:1992 end:2019 hq:Москва
+	Невская_сушка url:nevsushka.ru
+	Невский_сахар hq:Санкт-Петербург url:nevasugar.ru
+	Новая_Компания name:"Shokolat'e" w:30 url:shokolat-e.ru
+	ОАО_Уржумский_спиртоводочный_завод url:usvz.ru
 	Объединенные_кондитеры url:uniconf.ru
+	Орими hq:Санкт-Петербург url:orimi.com
 	Продимекс hq:Москва url:prodimex.ru
+	ПХ_Меркурий hq:Москва url:barinof.ru owns-tm:Barinoff,Мамина_дача
+	Разгуляй hq:Москва start:1992 end:2017
+	Ренна url:renna.ru hq:Москва owns-tm:Коровка_из_Кореновки,Алексеевское,Густияр,Милкимоны,Руслада,Облака_из_молока,Советское
+	Русагро hq:Москва start:1995 w:19300 url:rusagrogroup.ru,solpro.ru owns-tm:Чайкофский,Solpro
+	Русский_продукт hq:Москва url:rusprod.ru owns-tm:Печем_дома,Суперсуп,Бакалея101,Сатаря_Мельница,Mr_Сливкин,Coffitel,Традиция,Vegello,Дачный
+	Русское_поле hq:Краснодар url:russ-pole.ru owns-tm:Дядя_Ваня
 	Руссоль url:russalt.ru
 	Савушкин_продукт url:savushkin.com media/vk:vk.com/savushkin_product parent:Bremor
+	Саранский hq:Саранск url:saranskiy.com owns-tm:Spelta,Чистые_росы,Балчуг,Городок,Ginster_Gin,Самоваръ,Солодовая,Иней,Деревенька,Стопарик,Жаворонки,Золотая_Нива,Юрий_Долгорукий,Молодые_хлеба,Водка_Варежки,Мордовия,Вастома,Мордовочка,Старый_Саранск,Саранская
+	Сибагро url:sibagrogroup.ru
 	Славянка url:slavyanka.com
+	Состра url:sostra.ru owns-tm:Sen_Soy,Paprichi,Папричи start:2001
 	Таврос url:tavros.ru
+	ТД_Фаворит url:td-favoritbeer.narod.ru
 	ТД_Фиш_Трейд url:tdfishtrade.ru
-	Новая_Компания name:"Shokolat'e" w:30 url:shokolat-e.ru
+	Хамадей hq:Донецк owns-tm:Хортиця,Фантом,Белое_солнце
+	ЭФКО hq:Москва url:efko.ru
 	Янта url:yantacom.ru
+	Ястро url:ястро.рф
+	Abi place:Владимир url:abi.ru owns-tm:Вязанка,Горячая_штучка,Стародворье,Баварушка,Ядрена_копоть,Grandmeni,Особый_рецепт,Foodgital
+	Azersun start:1991 hq:Баку url:azersun.com/ru owns-tm:Азерчай
+	BAT deabbr:"British-American Tobacco" url:batrussia.ru owns-tm:Kent,Rothmans,Vogue,Lucky_Strike,Pall_Mall,Ява
 	Bremor start:1998 hq:Брест w:6K
+	British_American_Tobacco start:1902 hq:London url:batrussia.ru
 	Cafe_in_cafe start:2003 url:cafeincafe.ru
-	JTI url:jti.com
+	CG_Foods hq:Катманду url:cgfoods.ru owns-tm:Wai_Wai
+	Danone url:danone.ru
+	DeCecco hq:Fara_San_Martino,Москва url:dececcorussia.com
+	Essen_Production url:essenproduction.com media/vk:vk.com/essenproduction owns-tm:Махеевъ
+	Ferrero hq:Alba url:ferrero.ru owns-tm:Rafaello,Kinder_Chocolate,Kinder_Сюрприз,Nutella,Tic_Tac
+	Grand-NN start:1993 hq:Нижний_Новгород url:grandnngroup.ru
+	Imperial_Tobacco start:1901 hq:Bristol url:imperial-tobacco.ru owns-tm:Davidoff,West,Jade,P_S,Максим
+	IRGA url:irgagroup.com
+	JTI deabbr:"Japan Tobacco International" url:jti.com
+	Kraft_Foods hq:Nortfield owns-tm:Jacobs,Carte_Noire,Maxwell_House
+	KT_G hq:Тэджон url:ktng.ru 
 	Mareven url:mareven.ru
+	Mars url:rus.mars.com
+	Mondelez_International hq:Deerfield start:2012 url:mondelezinternational.com/Russia media/vk:vk.com/mondelezrus owns-tm:Oreo,Milka,Cadbury,Alpen_Gold
+	Nestle alt:Нестле url:nestle.ru media/vk:vk.com/nestlerussia ownns-tm:Россия_щедрая_душа,Быстров,Вкус_лета,Горячая_кружка,Сладкоежка,Maggi
+	Novabev_Group former-id:Синергия,Белуга_Групп url:novabev.com
+	PepsiCo url:domik-v-derevne.com,agulife.ru,chudo.com,wbd.ru
+	Philip_Morris start:1900 hq:Lausanne url:pmi.com
+	Sinko_Group start:1995 hq:Москва url:sinkogroup.ru owns-tm:Тай-Со,Стебель_Бамбука,Vicenta
+	ООО_Пищепромпродукт owns-tm:Пищепромпродукт,Абрико url:uksus.com

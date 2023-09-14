@@ -25,7 +25,7 @@
 (define (list->pretty-string lst (sep " "))
   (string-join (map ~a lst) sep))
 
-(define new-products (new-refs "/home/denis/projects/food_industry_kgr/source/taxonomies/products.tree" "prod"))
+(define new-products (sort (new-refs "/home/denis/projects/food_industry_kgr/source/taxonomies/products.tree" "prod") a-z))
 (define new-companies (new-refs "/home/denis/projects/food_industry_kgr/source/facts/companies.tree" "company"))
 (define new-trademarks (new-refs "/home/denis/projects/food_industry_kgr/source/facts/trademarks.tree" "tm"))
 

@@ -13,3 +13,5 @@ factories_tare +a:ProductionUnit
 	Формула_упаковки_Рязань place:Рязань prod:Скотч,Лента_клейкая
 	ЮжУралГрупп place:Стерлитамак prod:Гофрокартон,Гофротара
 	Packmarket place:Москва prod:Гофрокартон
+factories_packers
+	Витачай place:Тверь url:vitachai.ru packs-into:Чайный_фильтр-пакет_бумажный,Пленка_полипропиленовая,Чайная_пирамидка_нейлоновая,Пачка_картонная,Пленка_Flow_Pack

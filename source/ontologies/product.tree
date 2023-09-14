@@ -3,6 +3,13 @@ product
 		Product
 			NonOKONHProduct
 		Product
+			FoodProduct
+		Product
 			RawProduct
+		Product
+			Pack
+				Tare
 	properties +a:rdf/Property +hi-inv-rel:subproperty-of
+		prod domain:ProductionUnit range:Product
 		prod-group domain:Product range:Product
+		handles-prod domain:Company range:Product
