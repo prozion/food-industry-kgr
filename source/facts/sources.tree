@@ -5,6 +5,8 @@ sources +a:src/Source
 	Ou url:oborudunion.ru/company ; RU 1000 отрасли
 	Porti url:porti.ru/company
 	Ppr url:poporyadku.ru
+	Pr url:product.ru
+	Retailers url:retail.ru/rbc/tradingnetworks/businesses/food-retail-alcohol/
 	Sugar url:sugarfactories.ru/companies
 	RbcCmp url:companies.rbc.ru
 	W url:wikipedia.org

@@ -32,6 +32,7 @@ food_industry a:owl/Ontology ns:https://purl.org/prozion/food_industry# rdfs/lab
 		start range:time/Year
 		url eq-property:media/url range:media/Url
 			old-url
+		working-note subproperty-of:skos/editorialNote
 		year eq-property:time/year range:time/Year
 	individuals
 		[taxonomies/industries.tree]

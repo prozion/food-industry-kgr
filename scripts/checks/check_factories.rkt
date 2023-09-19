@@ -7,14 +7,28 @@
 (require tabtree/utils)
 (require tabtree/sorters)
 
+; move to tabtree lib whan back to Ozery
+(define (id* item)
+  (flatten `(,(id item) ,($ alt item))))
+
 (define (check-duplicated-ids tabtree)
   (let* (
         (duplicated-ids ($ duplicated-ids tabtree)))
     (for (((k v) duplicated-ids))
       (displayln (format "~a [~a]" k (implode v ", "))))))
 
-(define (new-refs existed-refs-file refname)
-  (let* ((existed-refs (->> existed-refs-file parse-tabtree hash-values (filter (λ (item) ($ __parent item))) (map id)))
+(define (new-refs existed-refs-files refname)
+  (let* ((get-existed-refs (λ (existed-refs-file)
+                            (->>
+                              existed-refs-file
+                              parse-tabtree
+                              hash-values
+                              (filter (λ (item) ($ __parent item)))
+                              (map id*)
+                              flatten)))
+        (existed-refs (if (list? existed-refs-files)
+                        (->> existed-refs-files (map get-existed-refs) flatten remove-duplicates)
+                        (get-existed-refs existed-refs-files)))
         (factory-tabtree (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/factories.tree"))
         (factory-cosmetics-tabtree (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/factories_cosmetics.tree"))
         (all-factories-tabtree (hash-union factory-tabtree factory-cosmetics-tabtree))
@@ -26,8 +40,12 @@
   (string-join (map ~a lst) sep))
 
 (define new-products (sort (new-refs "/home/denis/projects/food_industry_kgr/source/taxonomies/products.tree" "prod") a-z))
-(define new-companies (new-refs "/home/denis/projects/food_industry_kgr/source/facts/companies.tree" "company"))
-(define new-trademarks (new-refs "/home/denis/projects/food_industry_kgr/source/facts/trademarks.tree" "tm"))
+(define new-companies (sort (new-refs (list
+                                        "/home/denis/projects/food_industry_kgr/source/facts/companies.tree"
+                                        "/home/denis/projects/food_industry_kgr/source/facts/retailers.tree" )
+                                      "company")
+                            a-z))
+(define new-trademarks (sort (new-refs "/home/denis/projects/food_industry_kgr/source/facts/trademarks.tree" "tm") a-z))
 
 (define factories_tt (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/factories.tree" #:parse-info #t))
 
