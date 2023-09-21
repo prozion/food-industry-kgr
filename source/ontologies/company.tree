@@ -54,8 +54,8 @@ company
 		ta/Group
 			GroupOfCompanies
 	properties +a:rdf/Property +hi-inv-rel:subproperty-of
-		assets domain:FinancialUnit range:Assets
-		cap domain:FinancialUnit range:Capitalization
+		assets domain:FinancialUnit range:IntegerAbbreviated
+		cap domain:FinancialUnit range:IntegerAbbreviated
 			acap d:"Authorised capital" ; "Уставной капитал"@ru
 			ocap d:"Own capital (equity)"
 			mcap d:"Market capitalization"
@@ -66,7 +66,7 @@ company
 			former-share domain:Company range:Share
 		from range:Deal domain:Businessman
 		hq eq-property:org/hq
-		inc domain:FinancialUnit range:Income
+		inc domain:FinancialUnit range:IntegerAbbreviated
 			oinc d:"Operational income - earnings before interest and taxes"
 			pinc d:"Pure income (net income)"
 		market-share domain:`ProductionUnit,Company` range:Share
@@ -75,7 +75,7 @@ company
 		owned-by domain:Property range:Organization
 		parent domain:Organization range:Organization d:"Parent organization in a form of Holding, umbrella company or whatever"
 		part-of eq-property:tabtree/part-of
-		rev domain:Organization range:Revenue
+		rev domain:Organization range:tabtree/IntegerAbbreviated
 		share domain:`Person,Company` range:PropertyUnit
 			owner
 				co-owner

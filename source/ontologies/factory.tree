@@ -24,6 +24,6 @@ factory
 		stop domain:ProductionUnit range:time/Year
 		url domain:ProductionUnit
 		tpd domain:rdf/Statement range:rdfs/Literal d:"Processing of a raw product in tonnes per day"
-		w domain:ProductionUnit range:tabtree/PositiveInteger
+		w domain:ProductionUnit range:tabtree/IntegerAbbreviated
 			w-future d:"Planned number of workers"
 	

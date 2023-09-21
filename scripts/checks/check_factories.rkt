@@ -31,7 +31,8 @@
                         (get-existed-refs existed-refs-files)))
         (factory-tabtree (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/factories.tree"))
         (factory-cosmetics-tabtree (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/factories_cosmetics.tree"))
-        (all-factories-tabtree (hash-union factory-tabtree factory-cosmetics-tabtree))
+        ; (all-factories-tabtree (hash-union factory-tabtree factory-cosmetics-tabtree))
+        (all-factories-tabtree factory-tabtree)
         (refs (->> all-factories-tabtree hash-values (map (λ (item) (hash-ref* item refname))) flatten remove-duplicates cleanmap)))
     (minus refs existed-refs)))
 
@@ -39,7 +40,10 @@
 (define (list->pretty-string lst (sep " "))
   (string-join (map ~a lst) sep))
 
-(define new-products (sort (new-refs "/home/denis/projects/food_industry_kgr/source/taxonomies/products.tree" "prod") a-z))
+(define new-products (sort (new-refs (list
+                                        "/home/denis/projects/food_industry_kgr/source/taxonomies/products.tree"
+                                        "/home/denis/projects/food_industry_kgr/source/taxonomies/raw_products.tree") 
+                                      "prod") a-z))
 (define new-companies (sort (new-refs (list
                                         "/home/denis/projects/food_industry_kgr/source/facts/companies.tree"
                                         "/home/denis/projects/food_industry_kgr/source/facts/retailers.tree" )

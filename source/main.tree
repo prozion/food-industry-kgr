@@ -16,31 +16,36 @@ food_industry a:owl/Ontology ns:https://purl.org/prozion/food_industry# rdfs/lab
 		media ns:https://purl.org/prozion/tabtree/media#
 		c ns:https://purl.org/prozion/tabtree/contacts#
 		xsd ns:http://www.w3.org/2001/XMLSchema#
-	[ontologies/brand.tree]
+	[ontologies/_compatibility.tree]
 	[ontologies/company.tree]
 	[ontologies/factory.tree]
-	[ontologies/industry.tree]
+	; [ontologies/industry.tree]
 	[ontologies/person.tree]
 	[ontologies/product.tree]
 	[ontologies/source.tree]
+	[ontologies/trademark.tree]
 	properties +a:rdf/Property +hi-inv-rel:subproperty-of
 		alt d:"alternative name/id"
 		abbr eq-property:owl/equivalentProperty	
 		case-of a:owl/TransitiveProperty,owl/ReflexiveProperty owl/inverseOf:narrower d:"substitution for skos/broader"
-		end eq-property:time/end range:time/Year
+		end eq-property:time/end
 		former-id eq-property:ta/former-id
-		start range:time/Year
-		url eq-property:media/url range:media/Url
+		start eq-property:time/start
+		url eq-property:media/url
 			old-url
 		working-note subproperty-of:skos/editorialNote
-		year eq-property:time/year range:time/Year
+		year eq-property:time/year
 	individuals
-		[taxonomies/industries.tree]
+		; [taxonomies/industries.tree]
 		[taxonomies/products.tree]
+		[taxonomies/raw_products.tree]
+		[facts/companies.tree]
 		[facts/factories.tree]
 		; [facts/factories_cosmetics.tree]
 		; [facts/factories_equipment.tree]
 		; [facts/factories_tare.tree]
 		; [facts/places_russia.tree]
 		; [facts/places_world.tree]
-		; [facts/sources.tree]
+		[facts/retailers.tree]
+		[facts/sources.tree]
+		[facts/trademarks.tree]

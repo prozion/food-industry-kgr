@@ -1,17 +1,12 @@
 sources +a:src/Source
-	ПСО dc/title:"Перечень системообразующих организаций" url:data.economy.gov.ru/system_org.xlsx
-	Au url:https://www.audit-it.ru/contragent
-	Fabr url:fabricators.ru/zavody
-	Ou url:oborudunion.ru/company ; RU 1000 отрасли
-	Porti url:porti.ru/company
-	Ppr url:poporyadku.ru
-	Pr url:product.ru
-	Retailers url:retail.ru/rbc/tradingnetworks/businesses/food-retail-alcohol/
-	Sugar url:sugarfactories.ru/companies
-	RbcCmp url:companies.rbc.ru
-	W url:wikipedia.org
-	W_компании wiki:Категория:Предприятия
-	W_отрасли wiki:Промышленность#Отрасли
-	W_предприятия wiki:Категория:Компании_по_городам_России
+	Fabr url:fabricators.ru/zavody d:"Список производств и компаний пищевой промышленности"
+	Oborud url:oborudunion.ru/company/pischevoe-oborudovanie d:"Рейтинг компаний-производителей оборудования для пищевой промышленности, исходя из посещаемости их сайтов"
+	Porti url:porti.ru/company d:"Информация по акциям компаний"
+	Ppr url:poporyadku.ru d:"Таблицы ОКОНХ и ОКВЭД"
+	Pr url:product.ru d:"Поиск компаний по производимому продукту"
+	Retailers url:retail.ru/rbc/tradingnetworks/businesses/food-retail-alcohol d:"Список ритейлеров"
+	Sugar url:sugarfactories.ru/companies d:"Список сахарных заводов"
+	RbcCmp url:companies.rbc.ru d:"Краткое досье по компаниям"
+	W url:wikipedia.org d:"Википедия"
 
 
