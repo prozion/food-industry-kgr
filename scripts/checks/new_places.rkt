@@ -6,8 +6,8 @@
 (require tabtree)
 (require tabtree/utils)
 
-(define places_russia_tt (parse-tabtree "/home/denis/projects/food-industry-kgr/source/facts/places_russia.tree"))
-(define places_world_tt (parse-tabtree "/home/denis/projects/food-industry-kgr/source/facts/places_world.tree"))
+(define places_russia_tt (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/places_russia.tree"))
+(define places_world_tt (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/places_world.tree"))
 (define places (hash-keys (t+ places_russia_tt places_world_tt)))
 
 (define places_without_coors (->> (t+ places_world_tt places_russia_tt)
@@ -24,8 +24,9 @@
 
 (define objects_places (->>
                           (t+
-                            (parse-tabtree "/home/denis/projects/food-industry-kgr/source/factories.tree")
-                            (parse-tabtree "/home/denis/projects/food-industry-kgr/source/factories_tare.tree")
+                            (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/factories.tree")
+                            (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/factories_tare.tree")
+                            (parse-tabtree "/home/denis/projects/food_industry_kgr/source/facts/factories_equipment.tree")
                             )
                           hash-values
                           (map (λ (item) ($ place item)))
@@ -38,6 +39,6 @@
                       (minus objects_places places)))
 
 ; (--- places_without_coors)
-(--- "New places: ")
+(--- (format "~a new places: " (length new_places)))
 (---- (sort new_places a-z))
 ; (--- "Places with undefined population: " (sort places_without_pop a-z))

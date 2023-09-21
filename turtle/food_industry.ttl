@@ -608,7 +608,7 @@ c:phone
  owl:equivalentProperty org:hq .
 
 :Hummuskasa
- :place :Энгельс-19 ;
+ :place :Энгельс ;
  :url "hummuskasa.com" .
 
 :ILBakery
@@ -2175,7 +2175,7 @@ tabtree:Id
 
 :Алексеевский_молочноконсервный_комбинат
  rdf:type :ProductionUnit ;
- :place :Алексеевка_Белгородская ;
+ :place :Алексеевка ;
  :url "amkk.ru" ;
  :company :Ренна ;
  :prod :Молоко_сгущеное ;
@@ -5252,7 +5252,7 @@ tabtree:Id
 
 :КДВ_Краснодар
  rdf:type :ProductionUnit ;
- :place :Белая_глина ;
+ :place :Белая_Глина ;
  :company :КДВ ;
  :tm :Бабкины_семечки ;
  :prod :Семена_подсолнечника_обжаренные .
@@ -9038,6 +9038,13 @@ tabtree:Id
  rdf:type :FoodProduct ;
  :case-of :Повидло .
 
+:Поволжский_пищевой_комбинат
+ :place :Тольятти ;
+ :owns-tm :Сытно_и_Вкусно ;
+ :url "soven.ru" ;
+ :prod :Кофе, :Майонез ;
+ :start "2001" .
+
 :Погарская_сигаретно-сигарная_фабрика
  :place :Погар ;
  :url "pccf.ru" ;
@@ -11423,6 +11430,9 @@ tabtree:Id
  :place :Пузская_Слобода ;
  :url "сырятинский-крахмал.рф" .
 
+:Сытно_и_Вкусно
+ rdf:type :Trademark .
+
 :Табак
  rdf:type :Product ;
  :case-of :Изделие_табачное .
@@ -12086,7 +12096,7 @@ tabtree:Id
  :case-of :Изделие_макаронное .
 
 :Фрау_Марта
- :place :Hjcnjd-yf-Ljye ;
+ :place :Ростов-на-Дону ;
  :url "фраумарта.рф" .
 
 :Фрикадельки

@@ -1,4 +1,6 @@
 places_world +a:loc/Country
+	Абхазия
+		Сухум lat:43.003852 lon:41.019151
 	Азербайджан +a:loc/City +hi-inv-rel:country
 		Баку lat:40.372974 lon:49.853148
 	Армения +a:loc/City +hi-inv-rel:country
