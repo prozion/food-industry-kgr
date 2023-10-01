@@ -5,7 +5,7 @@ select distinct ?factory ?place ?product where {
   {
     ?factory rdf:type :ProductionUnit .
     ?factory :prod ?product .
-    ?product :case-of* :Продукт_молочный .
+    ?product :broader* :Продукт_молочный .
   }
   optional
   {

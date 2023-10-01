@@ -1,7 +1,6 @@
-industry
-	classes +a:owl/Class +hi-inv-rel:subclass-of
-		Industry
-		OKONHCode subclass-of:rdfs/Literal
-	properties +a:rdf/Property +hi-inv-rel:subproperty-of
-		okonh domain:Industry range:OKONHCode
-		industry range:Industry
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	Industry
+	OKONHCode subclass-of:rdfs/Literal
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	okonh domain:Industry range:OKONHCode
+	industry range:Industry

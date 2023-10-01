@@ -7,9 +7,6 @@
 (require tabtree/utils)
 (require tabtree/sorters)
 
-; move to tabtree lib whan back to Ozery
-(define (id* item)
-  (flatten `(,(id item) ,($ alt item))))
 
 (define (check-duplicated-ids tabtree)
   (let* (
@@ -36,13 +33,9 @@
         (refs (->> all-factories-tabtree hash-values (map (λ (item) (hash-ref* item refname))) flatten remove-duplicates cleanmap)))
     (minus refs existed-refs)))
 
-; remove this patch when back to Ozery!
-(define (list->pretty-string lst (sep " "))
-  (string-join (map ~a lst) sep))
-
 (define new-products (sort (new-refs (list
                                         "/home/denis/projects/food_industry_kgr/source/taxonomies/products.tree"
-                                        "/home/denis/projects/food_industry_kgr/source/taxonomies/raw_products.tree") 
+                                        "/home/denis/projects/food_industry_kgr/source/taxonomies/raw_products.tree")
                                       "prod") a-z))
 (define new-companies (sort (new-refs (list
                                         "/home/denis/projects/food_industry_kgr/source/facts/companies.tree"

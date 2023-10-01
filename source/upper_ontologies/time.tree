@@ -1,6 +1,8 @@
 classes +a:owl/Class +hi-inv-rel:subclass-of
-	Source
+	Time subclass-of:rdfs/Literal
+		Date
+		Year
 properties +a:rdf/Property +hi-inv-rel:subproperty-of
-	s d:"Source"
-		s-wiki
-	s-url subproperty-of:s,url range:UrlCore
+	end range:Time
+	start range:Time
+	year range:Year

@@ -1,6 +1,6 @@
 parameters
-	$prj_dir dir:/home/denis/projects/food-industry-kgr
-setup d:"how to run the knowledge base" prereq-file:setup-recipes/javascript_setup.tree,setup-recipes/ontology_setup.tree,
+	$prj_dir dir:/home/denis/projects/food_industry_kgr
+setup d:"how to run the knowledge base" prereq-file:setup_recipes/javascript_setup.tree,setup_recipes/ontology_setup.tree,
 	edit_kb_source_files
 		add_new_facts d:"add facts to $prj_dir/source/*.tree"
 		choose_parts d:"choose what *.tree's to assemble by adding or deleting/commenting include snippets. Include snippets are those that contain tabtree filename inside the square brackets: '[filename.tree]'"

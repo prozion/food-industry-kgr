@@ -3,38 +3,24 @@ food_industry a:owl/Ontology ns:https://purl.org/prozion/food_industry# rdfs/lab
 		rdf ns:http://www.w3.org/1999/02/22-rdf-syntax-ns#
 		rdfs ns:http://www.w3.org/2000/01/rdf-schema#
 		owl ns:http://www.w3.org/2002/07/owl#
-		dc ns:http://purl.org/dc/elements/1.1/
-		skos ns:http://www.w3.org/2004/02/skos/core#
-		tabtree ns:https://purl.org/prozion/tabtree/core#
-		ta ns:https://purl.org/prozion/tabtree/abstract#
-		tm ns:https://purl.org/prozion/tabtree/metrics#
-		time ns:https://purl.org/prozion/tabtree/time#
-		loc ns:https://purl.org/prozion/tabtree/location#
-		pers ns:https://purl.org/prozion/tabtree/person#
-		org ns:https://purl.org/prozion/tabtree/organization#
-		src ns:https://purl.org/prozion/tabtree/source#
-		media ns:https://purl.org/prozion/tabtree/media#
-		c ns:https://purl.org/prozion/tabtree/contacts#
 		xsd ns:http://www.w3.org/2001/XMLSchema#
-	[ontologies/_compatibility.tree]
+	[upper_ontologies/editing_meta.tree]
+	[upper_ontologies/internet.tree]
+	[upper_ontologies/object.tree]
+	[upper_ontologies/organization.tree]
+	[upper_ontologies/person.tree]
+	[upper_ontologies/process.tree]
+	[upper_ontologies/product.tree]
+	[upper_ontologies/space.tree]
+	[upper_ontologies/taxonomy.tree]
+	[upper_ontologies/time.tree]
 	[ontologies/company.tree]
 	[ontologies/factory.tree]
-	; [ontologies/industry.tree]
-	[ontologies/person.tree]
-	[ontologies/product.tree]
+	[ontologies/businessman.tree]
+	[ontologies/food_product.tree]
+	[ontologies/place.tree]
 	[ontologies/source.tree]
 	[ontologies/trademark.tree]
-	properties +a:rdf/Property +hi-inv-rel:subproperty-of
-		alt d:"alternative name/id"
-		abbr eq-property:owl/equivalentProperty	
-		case-of a:owl/TransitiveProperty,owl/ReflexiveProperty owl/inverseOf:narrower d:"substitution for skos/broader"
-		end eq-property:time/end
-		former-id eq-property:ta/former-id
-		start eq-property:time/start
-		url eq-property:media/url
-			old-url
-		working-note subproperty-of:skos/editorialNote
-		year eq-property:time/year
 	individuals
 		; [taxonomies/industries.tree]
 		[taxonomies/products.tree]
@@ -44,8 +30,9 @@ food_industry a:owl/Ontology ns:https://purl.org/prozion/food_industry# rdfs/lab
 		; [facts/factories_cosmetics.tree]
 		; [facts/factories_equipment.tree]
 		; [facts/factories_tare.tree]
-		; [facts/places_russia.tree]
-		; [facts/places_world.tree]
+		[facts/places_russia.tree]
+		[facts/places_world.tree]
+		[facts/persons.tree]
 		[facts/retailers.tree]
 		[facts/sources.tree]
 		[facts/trademarks.tree]

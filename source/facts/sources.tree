@@ -1,4 +1,4 @@
-sources +a:src/Source
+sources +a:Source
 	Fabr url:fabricators.ru/zavody d:"Список производств и компаний пищевой промышленности"
 	Oborud url:oborudunion.ru/company/pischevoe-oborudovanie d:"Рейтинг компаний-производителей оборудования для пищевой промышленности, исходя из посещаемости их сайтов"
 	Porti url:porti.ru/company d:"Информация по акциям компаний"

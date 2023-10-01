@@ -1,0 +1,13 @@
+classes +a:owl/Class +hi-inv-rel:subclass-of
+	Person
+		Businessman
+	Post
+	Money subclass-of:rdfs/Literal
+properties +a:rdf/Property +hi-inv-rel:subproperty-of
+	board domain:Person range:Company
+		chairman
+	bplace range:Place
+	cash domain:Person range:Money
+	competitor a:owl/SymmetricProperty domain:Businessman range:Businessman
+	founder domain:Person range:Organization
+	partner a:owl/SymmetricProperty domain:Businessman range:Businessman
