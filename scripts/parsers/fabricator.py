@@ -15,6 +15,7 @@ def init():
     driver = webdriver.Chrome(options=options)
     return driver
 
+# //div[@class='title-site--h2'][text()='Контакты']/following-sibling::div//div[text()='Веб-сайт']/following-sibling::div
 def get_parameter_by_xpath(driver, section, title, href=False):
     plain_text_xpath = "//div[@class='title-site--h2'][text()='%s']/following-sibling::div//div[text()='%s']/following-sibling::div" % (section, title)
     href_text_xpath = "//div[@class='title-site--h2'][text()='%s']/following-sibling::div//div[text()='%s']/following-sibling::div//a" % (section, title)
@@ -25,6 +26,7 @@ def get_parameter_by_xpath(driver, section, title, href=False):
     except NoSuchElementException:
         result = ""
     return result
+
 
 def get_company_info(driver, url):
     time.sleep(0.2)

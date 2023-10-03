@@ -2,3 +2,6 @@
 *.xml
 test.ttl
 test.rq
+.RData
+.Rhistory
+test_*

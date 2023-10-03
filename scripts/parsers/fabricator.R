@@ -1,36 +1,49 @@
 #! /usr/bin/env Rscript
 
+library(wdman)
 library(RSelenium)
 
-getHTML = function(url) {
-  dr = remoteDriver(browserName="phantomjs", port=3001L)
-  dr$open(silent=TRUE)
-  dr$navigate(url)
+cl <- chrome(port=3005L, version="117.0.5938.132", verbose=FALSE)
+driver <- remoteDriver(
+      browserName="chrome",
+      extraCapabilities = list(chromeOptions = list(args = list('--headless'))),
+      port = 3005L
+    )
+driver$open(silent=TRUE)
+
+# init = function() {
+#   cl <- chrome(port=3005L, version="117.0.5938.132", verbose=FALSE)
+#   driver <- remoteDriver(
+#         browserName="chrome",
+#         extraCapabilities = list(chromeOptions = list(args = list('--headless'))),
+#         port = 3005L
+#       )
+#   driver$open(silent=TRUE)
+#   return(driver)
+# }
+
+getHTML = function(driver, url) {
   # Sys.sleep(1)
-  dr$getPageSource()
+  driver$navigate(url)
+  # driver$getTitle()
+  element <- driver$findElement(using = "xpath", "//div[@class='title-site--h2'][text()='Контакты']/following-sibling::div//div[text()='Веб-сайт']/following-sibling::div")
+  element$getElementText()
 }
 
-getHTML("http://example.org")
+appendTabtreeLine = function(id, place = "", email = "", phone = "", url = "", w = "") {
+  fp <- file("test_new_factories.tree", open = "a")
+  place = ifelse(place == "", "", sprintf(" place:\"%s\"", place))
+  phone = ifelse(phone == "", "", sprintf(" phone:\"%s\"", phone))
+  email = ifelse(email == "", "", sprintf(" email:%s", email))
+  url = ifelse(url == "", "", sprintf(" url:%s", url))
+  w = ifelse(w == "", "", sprintf(" w:%s", w))
+  id = sprintf("\"%s\"", id)
+  res <- paste0(id, place, phone, email, url, w)
+  writeLines(res, fp)
+  close(fp)
+}
 
+# v <- getHTML(driver, "https://fabricators.ru/proizvoditel/ipatovskiy-pivovarennyy-zavod-ipz")
+# print(v)
 
-# (define sample
-# #<<SAMPLE
-# <div class="content-contact-item">
-#   <div class="content-contact-item__tt">Веб-сайт</div>
-#     <div class="content-contact-item__block">
-#       <div class="field field-name-field-site field-type-link-field field-label-hidden">
-#         <div class="field-items">
-#           <div class="field-item even">
-#             <a href="http://varnitsa.ru/?utm_source=fabricators&amp;utm_medium=free&amp;utm_campaign=callme" target="_blank" rel="nofollow">varnitsa.ru/</a>
-#           </div>
-#         </div>
-#       </div>
-#     </div>
-# </div>
-# SAMPLE
-# )
-#
-# ; (--- (get-url "https://fabricators.ru/proizvoditel/varnica"))
-# ; (--- (regexp-match* #px"(.а.).*? " "Так съешь же этих мягких французских булочек во Франции " #:match-select cadr))
-# ; (--- (regexp-match* #px"<div.*?>Веб-сайт.*?<a href=.*?>(.*?)</a>" sample #:match-select cadr))
-# ; (--- (regexp-match* #px".*<div.*?>Веб-сайт.*?<a href=.*?>(.*?)</a>.*" (get-url "https://fabricators.ru/proizvoditel/varnica") #:match-select cadr))
+appendTabtreeLine("Алейский сахарный завод", place = "Алейск", url = "altaysahar.ru")
