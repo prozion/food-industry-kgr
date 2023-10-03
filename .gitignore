@@ -1,3 +1,4 @@
 *.log
 *.xml
 test.ttl
+test.rq

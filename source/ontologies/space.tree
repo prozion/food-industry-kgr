@@ -6,5 +6,5 @@ properties +a:rdf/Property +hi-inv-rel:subproperty-of
 	country domain:Place range:Country
 	place range:Place
 		city range:City
-	lat domain:Place range:rdfs/Literal d:"Latitude"
-	lon domain:Place range:rdfs/Literal d:"Longitude"
+	lat domain:Place range:Float d:"Latitude"
+	lon domain:Place range:Float d:"Longitude"

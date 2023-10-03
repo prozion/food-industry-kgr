@@ -10,6 +10,7 @@ food_industry a:owl/Ontology ns:https://purl.org/prozion/food_industry# rdfs/lab
 	[ontologies/factory.tree]
 	[ontologies/food_product.tree]
 	[ontologies/internet.tree]
+	[ontologies/number.tree]
 	[ontologies/object.tree]
 	[ontologies/organization.tree]
 	[ontologies/person.tree]

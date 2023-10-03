@@ -38,7 +38,7 @@
                       places_without_coors
                       (minus objects_places places)))
 
-; (--- places_without_coors)
-(--- (format "~a new places: " (length new_places)))
-(---- (sort new_places a-z))
 ; (--- "Places with undefined population: " (sort places_without_pop a-z))
+; (--- "Places without coors" places_without_coors)
+(--- (format "~a new places: " (length new_places)))
+(--- (list->pretty-string (sort new_places a-z) "\n"))

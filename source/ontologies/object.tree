@@ -3,7 +3,6 @@ classes +a:owl/Class +hi-inv-rel:subclass-of
 	Id subclass-of:rdfs/Literal
 	GroupOfObjects subclass-of:owl/Thing
 		GroupOfPeople
-	IntegerAbbreviated subclass-of:rdfs/Literal
 properties +a:rdf/Property +hi-inv-rel:subproperty-of
 	abbr range:rdfs/Literal d:"Abbreviation"
 	deabbr range:rdfs/Literal d:"Deabbreviation"
