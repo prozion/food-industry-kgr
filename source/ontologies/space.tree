@@ -1,4 +1,5 @@
 classes +a:owl/Class +hi-inv-rel:subclass-of
+	Area subclass-of:owl/Thing
 	Country subclass-of:Object
 	Place subclass-of:Object
 		City

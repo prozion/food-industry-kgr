@@ -7,8 +7,9 @@ classes +a:owl/Class +hi-inv-rel:subclass-of
 		SovietId
 		TsarTimeId
 		FormerId
+	IndustrialArea subclass-of:Area
 properties +a:rdf/Property +hi-inv-rel:subproperty-of
-	ez domain:Factory range:Organization d:"Special economic zone, industrial park etc."
+	ez domain:Factory range:IndustrialArea d:"Special economic zone, industrial park etc."
 	equipment domain:Factory range:EquipmentCompany
 	facilities-from domain:Company range:ProductionUnit
 		equipment-from domain:ProductionUnit 

@@ -31,7 +31,7 @@ classes +a:owl/Class +hi-inv-rel:subclass-of
 			BusinessGroupOfPeople subclass-of:GroupOfPeople
 			Corporation subclass-of:GroupOfPeople,Company
 				StateCorporation subclass-of:StateOrganization
-			CorporateGroup subclass-of:Group
+			CorporateGroup subclass-of:GroupOfPeople
 				Concern
 			Company eq:Company
 				Holding

@@ -12,7 +12,7 @@ companies +a:Company
 	АСБ url:asbgrupp.ru
 	Балтийский_берег start:2000 hq:Санкт-Петербург url:baltbereg.com
 	Балтика url:corporate.baltika.ru owns-tm:Балтика,Балтика_0,Балтика_2,Балтика_3,Балтика_6,Балтика_7,Балтика_9,Kronenbourg,Somersby
-	БВК hq:Москва url:s-samobranka.ru owns-tm:Vitaland,Скатерть_Самобранка handles-prod:Соленье,Ананас,Персик,Манго,Клубника,Огурец_соленый,Помидор_соленый,Перец_болгарский_соленый,Огурец_маринованный,Помидор_маринованный,Патиссон_маринованый,Ассорти_овощное_маринованное,Лечо,Икра_овощная,Черемша_маринованная,Имбирь_маринованный,Перец_маринованный,Морковь_маринованная
+	БВК hq:Москва url:s-samobranka.ru owns-tm:Vitaland,Скатерть_Самобранка handles-prod:Соленье,Ананас,Персик,Манго,Клубника,Огурец_соленый,Помидор_соленый,Перец_болгарский_соленый,Огурец_маринованный,Помидор_маринованный,Патиссон_маринованный,Ассорти_овощное_маринованное,Лечо,Икра_овощная,Черемша_маринованная,Имбирь_маринованный,Перец_маринованный,Морковь_маринованная
 	Белая_Дача url:bdsalads.ru
 	Благо start:1993 hq:Санкт-Петербург url:gcblago.ru,blagoagro.ru vk:vk.com/club59756348 owns-tm:Freya,Almador,Благо_PRO,Дары_Кубани
 	Бородино url:gkborodino.ru
@@ -43,7 +43,7 @@ companies +a:Company
 	Международная_сахарная_корпорация hq:Москва url:sugarinter.com
 	Милком hq:Ижевск url:milkom-komos.ru
 	Мираторг hq:Москва start:1995 url:miratorg.ru w:38277^year:2021
-	Молвест
+	Молвест hq:Воронеж start:1992 url:molvest.ru
 	Молоко hq:Белевица w:156 url:moloko.group
 	Моснефтегазстройкомплект hq:Москва url:k-apk.ru
 	Мултон_Партнерс owns-tm:Добрый
@@ -71,6 +71,7 @@ companies +a:Company
 	Славянка url:slavyanka.com
 	Состра url:sostra.ru owns-tm:Sen_Soy,Paprichi,Папричи start:2001
 	Таврос url:tavros.ru
+	Тандер start:1995 hq:Краснодар
 	ТД_Азия hq:Ростов-на-Дону url:aziafood.com
 	ТД_Фаворит url:td-favoritbeer.narod.ru
 	ТД_Фиш_Трейд url:tdfishtrade.ru
@@ -105,16 +106,17 @@ companies +a:Company
 	Imperial_Tobacco start:1901 hq:Bristol url:imperial-tobacco.ru owns-tm:Davidoff,West,Jade,P_S,Максим
 	IRGA url:irgagroup.com
 	JTI deabbr:"Japan Tobacco International" url:jti.com
-	Kraft_Foods hq:Nortfield owns-tm:Jacobs,Carte_Noire,Maxwell_House
+	Kraft_Heinz hq:Chicago,Pittsburgh owns-tm:Jacobs,Carte_Noire,Maxwell_House
 	KT_G hq:Тэджон url:ktng.ru 
 	Mareven url:mareven.ru
 	Mars url:rus.mars.com
-	Mondelez_International hq:Deerfield start:2012 url:mondelezinternational.com/Russia vk:vk.com/mondelezrus owns-tm:Oreo,Milka,Cadbury,Alpen_Gold
+	Mondelez_International hq:Chicago start:2012 url:mondelezinternational.com/Russia vk:vk.com/mondelezrus owns-tm:Oreo,Milka,Cadbury,Alpen_Gold
 	Mylyn_Paras start:1928 hq:Hyvinkää url:myllynparas.com
 	Nestle alt:Нестле url:nestle.ru vk:vk.com/nestlerussia owns-tm:Россия_щедрая_душа,Быстров,Вкус_лета,Горячая_кружка,Сладкоежка,Maggi
 	Novabev_Group former-id:Синергия,Белуга_Групп url:novabev.com
 	PepsiCo alt:Пепсико url:domik-v-derevne.com,agulife.ru,chudo.com,wbd.ru owns-tm:J7,Pepsi
 	Philip_Morris start:1900 hq:Lausanne url:pmi.com
 	Sinko_Group start:1995 hq:Москва url:sinkogroup.ru owns-tm:Тай-Со,Стебель_Бамбука,Vicenta
+	X5 owns-tm:Светаево
 	1Корм hq:Воткинск url:1korm.com
 	7утра hq:Воронеж url:7utra.ru 

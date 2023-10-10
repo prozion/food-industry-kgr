@@ -27,7 +27,6 @@ def get_parameter_by_xpath(driver, section, title, href=False):
         result = ""
     return result
 
-
 def get_company_info(driver, url):
     time.sleep(0.2)
     driver.get(url)

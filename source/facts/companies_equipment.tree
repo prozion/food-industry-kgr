@@ -1,4 +1,9 @@
-оборудование_пищевой_промышлености
+equipment_companies +a:EquipmentCompany
 	КФТехно place:Маклино start:2015 prod:Термокамера,Камера_сушки,Камера_охлаждения,Камера_по_производству_колбас
+	Alfa_Laval
+	Atlas_Copco
+	Cimbria_Manufacturing
 	Fava
+	Krupp_Hamburg
 	Ocrim url:ocrim.com
+	Sipa

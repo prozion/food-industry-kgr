@@ -1,4 +1,7 @@
 classes +a:owl/Class +hi-inv-rel:subclass-of
-	Float subclass-of:owl/Thing
-	IntegerAbbreviated subclass-of:rdfs/Literal
+	rdfs/Literal
+		Decimal
+		Float
+		IntegerAbbreviated
+		Integer
 			

@@ -1,7 +1,8 @@
 *.log
 *.xml
-test.ttl
-test.rq
+test.*
 .RData
 .Rhistory
 test_*
+*_old.tree
+*_0.*

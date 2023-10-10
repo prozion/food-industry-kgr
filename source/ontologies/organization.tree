@@ -9,7 +9,7 @@ classes +a:owl/Class +hi-inv-rel:subclass-of
 			NonprofitCorporation
 		ResearchCenter
 properties +a:rdf/Property +hi-inv-rel:subproperty-of
-	hq subproperty-of:place domain:Organization range:City d:"Headquarters"
+	hq subproperty-of:place domain:Organization range:Place d:"Headquarters"
 	org range:Organization
 		company range:Company
 		uni range:University

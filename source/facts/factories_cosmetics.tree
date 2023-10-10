@@ -1,5 +1,0 @@
-factories_cosmetics +a:ProductionUnit
-	Дентал-Косметик-Рус place:Долгопрудный url:dental-kosmetik.ru start:2010 prod:Паста_зубная,Щетка_зубная,Ополаскиватель_полости_рта,Освежитель_полости_рта tm:DElivea
-	Завод_Сплат_Глобал place:Окуловка start:2010
-	Косметическая_фабрика_Свобода place:Москва start:1843 pinc:98.7M^year:2010 w:800
-	Smart_wash place:Красноярск start:2022 prod:Салфетка_влажная

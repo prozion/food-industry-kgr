@@ -1,5 +1,6 @@
 classes +a:owl/Class +hi-inv-rel:subclass-of
 	Object subclass-of:owl/Thing
+		Property
 	Id subclass-of:rdfs/Literal
 	GroupOfObjects subclass-of:owl/Thing
 		GroupOfPeople
